@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap");
+
+// Some initial values
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  font-weight: 500;
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.85);
+}
+p {
+  margin-bottom: 0;
+}
+
+// Color variables------------------------------------------------------
+$main: #444bd3;
+$white: #ffffff;
+$black: #121127;
+$text: rgba(18, 17, 39, 0.7);
+$gray: rgba(255, 255, 255, 0.56);
+// Color variables------------------------------------------------------
+
+.container {
+  padding: 24px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 1300px) {
+  .container {
+    max-width: 90%;
+  }
+}
+
+button {
+  transition: 0.3s ease-in-out;
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@import url("./home.scss");

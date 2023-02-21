@@ -1,0 +1,151 @@
+// Logo
+.logo {
+  gap: 12px;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 48px;
+    height: 48px;
+  }
+  span {
+    width: 340px;
+    color: white;
+    font-size: 18px;
+    text-align: left;
+    font-weight: 600;
+    line-height: 24px;
+  }
+}
+
+// Header
+.header {
+  padding: 16px;
+  background-color: #001d66;
+}
+
+// Colors
+.blue {
+  background-color: #e6f4ff;
+  border-left-color: #1677ff !important;
+  h3,
+  span {
+    color: #1677ff;
+  }
+}
+.pink {
+  background-color: #fff0f6;
+  border-left-color: #eb2f96 !important;
+  h3,
+  span {
+    color: #eb2f96;
+  }
+}
+.green {
+  background-color: #e6fffb;
+  border-left-color: #08979c !important;
+  h3,
+  span {
+    color: #08979c;
+  }
+}
+.purple {
+  background-color: #f9f0ff;
+  border-left-color: #531dab !important;
+  h3,
+  span {
+    color: #531dab;
+  }
+}
+.mango {
+  background-color: #f6ffed;
+  border-left-color: #389e0d !important;
+  h3,
+  span {
+    color: #389e0d;
+  }
+}
+.yellow {
+  background-color: #fff7e6;
+  border-left-color: #d46b08 !important;
+  h3,
+  span {
+    color: #d46b08;
+  }
+}
+
+.home {
+  min-height: 100vh;
+  background: #efefef;
+
+  section {
+    padding: 24px;
+    border-radius: 4px;
+    background: white;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    margin-bottom: 16px;
+    color: rgba(0, 0, 0, 0.88);
+  }
+  &__teachers {
+    &-pie {
+      display: flex;
+      & > div {
+        flex-grow: 1;
+        flex-basis: 30%;
+
+        &:nth-child(2) {
+          margin: 0 24px;
+          padding: 0 24px;
+          border-left: 1.5px solid #aaaaaa60;
+          border-right: 1.5px solid #aaaaaa60;
+        }
+      }
+      .statbox {
+        padding: 12px 24px;
+        border-radius: 4px;
+
+        border-left: 3px solid transparent;
+        h3 {
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 24px;
+          margin-bottom: 8px;
+        }
+        span {
+          font-weight: 600;
+          font-size: 30px;
+          line-height: 38px;
+        }
+        &:not(:last-child) {
+          margin-bottom: 24px;
+        }
+      }
+    }
+    & > .row {
+      gap: 24px;
+      display: flex;
+      margin-top: 24px;
+      section {
+        flex-grow: 1;
+        flex-basis: 45%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+}
+
+@media (max-width: 780px) {
+}
+
+@media (max-width: 600px) {
+}
+
+@media (max-width: 500px) {
+}
