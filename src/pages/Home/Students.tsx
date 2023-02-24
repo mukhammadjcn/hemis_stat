@@ -1,10 +1,10 @@
 import {
   Pie,
-  PieConfig,
-  Column,
-  ColumnConfig,
-  BarConfig,
   Bar,
+  Column,
+  PieConfig,
+  BarConfig,
+  ColumnConfig,
 } from "@ant-design/plots";
 import React from "react";
 
@@ -22,7 +22,7 @@ const Students: React.FC = () => {
         value: Math.floor(Math.random() * 20),
       },
     ],
-    innerRadius: 0.6,
+    innerRadius: 0.8,
     appendPadding: 10,
     colorField: "type",
     angleField: "value",
@@ -82,6 +82,140 @@ const Students: React.FC = () => {
     xField: "darajasi",
     seriesField: "name",
     color: ["#1677FF", "#52C41A"],
+    legend: {
+      position: "bottom",
+      itemHeight: 12,
+    },
+  };
+
+  const kamalakColumn: ColumnConfig = {
+    data: [
+      {
+        name: "Kunduzgi",
+        darajasi: "1-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kunduzgi",
+        darajasi: "2-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kunduzgi",
+        darajasi: "3-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kunduzgi",
+        darajasi: "4-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kunduzgi",
+        darajasi: "5-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kunduzgi",
+        darajasi: "6-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Maxsus sirtqi",
+        darajasi: "1-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Maxsus sirtqi",
+        darajasi: "2-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Maxsus sirtqi",
+        darajasi: "3-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Maxsus sirtqi",
+        darajasi: "4-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Maxsus sirtqi",
+        darajasi: "5-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Maxsus sirtqi",
+        darajasi: "6-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kechki",
+        darajasi: "1-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kechki",
+        darajasi: "2-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kechki",
+        darajasi: "3-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kechki",
+        darajasi: "4-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kechki",
+        darajasi: "5-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kechki",
+        darajasi: "6-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Sirtqi",
+        darajasi: "1-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Sirtqi",
+        darajasi: "2-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Sirtqi",
+        darajasi: "3-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Sirtqi",
+        darajasi: "4-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Sirtqi",
+        darajasi: "5-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Sirtqi",
+        darajasi: "6-kurs",
+        soni: Math.floor(Math.random() * 20),
+      },
+    ],
+    isStack: true,
+    yField: "soni",
+    xField: "darajasi",
+    seriesField: "name",
+    color: ["#13C2C2", "#EB2F96", "#FADB14", "#722ED1", "#F5222D"],
     legend: {
       position: "bottom",
       itemHeight: 12,
@@ -289,6 +423,79 @@ const Students: React.FC = () => {
 
   return (
     <div className="home__teachers">
+      <div className="students__top">
+        <div className="student">
+          <h2>Bakalavr</h2>
+          <div className="flex">
+            <div>
+              <h3>3000 ta</h3>
+              <h4>Erkak</h4>
+            </div>
+            <div>
+              <h3>1000 ta</h3>
+              <h4>Ayol</h4>
+            </div>
+          </div>
+        </div>
+        <div className="student">
+          <h2>Magistr</h2>
+          <div className="flex">
+            <div>
+              <h3>3000 ta</h3>
+              <h4>Erkak</h4>
+            </div>
+            <div>
+              <h3>1000 ta</h3>
+              <h4>Ayol</h4>
+            </div>
+          </div>
+        </div>
+        <div className="student">
+          <h2>Ordinatura</h2>
+          <div className="flex">
+            <div>
+              <h3>3000 ta</h3>
+              <h4>Erkak</h4>
+            </div>
+            <div>
+              <h3>1000 ta</h3>
+              <h4>Ayol</h4>
+            </div>
+          </div>
+        </div>
+        <div className="student">
+          <h2>Doktorantura (PhD)</h2>
+          <div className="flex">
+            <div>
+              <h3>3000 ta</h3>
+              <h4>Erkak</h4>
+            </div>
+            <div>
+              <h3>1000 ta</h3>
+              <h4>Ayol</h4>
+            </div>
+          </div>
+        </div>
+        <div className="student">
+          <h2>Doktorantura (DSc)</h2>
+          <div className="flex">
+            <div>
+              <h3>3000 ta</h3>
+              <h4>Erkak</h4>
+            </div>
+            <div>
+              <h3>1000 ta</h3>
+              <h4>Ayol</h4>
+            </div>
+          </div>
+        </div>
+        <div className="student">
+          <h2>Jami</h2>
+          <div className="flex">
+            <h1>3000 ta</h1>
+          </div>
+        </div>
+      </div>
       <div className="row">
         <section className="home__teachers-bar">
           <h2 className="title">Talabalar (To‘lov shakli bo‘yicha)</h2>
@@ -303,6 +510,16 @@ const Students: React.FC = () => {
         <section className="home__teachers-bar">
           <h2 className="title">Talaba ( Hududlar bo‘yicha)</h2>
           <Column {...configColumnHududlar} />
+        </section>
+      </div>
+      <div className="row">
+        <section className="home__teachers-bar">
+          <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha 1</h2>
+          <Column {...kamalakColumn} />
+        </section>
+        <section className="home__teachers-bar">
+          <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha 2</h2>
+          <Column {...kamalakColumn} />
         </section>
       </div>
       <div className="row">

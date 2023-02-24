@@ -40,7 +40,7 @@ const Teachers: React.FC = () => {
         value: 5,
       },
     ],
-    innerRadius: 0.6,
+    innerRadius: 0.8,
     appendPadding: 10,
     colorField: "type",
     angleField: "value",
