@@ -15,14 +15,14 @@ const Home: React.FC = () => {
           type="card"
           items={[
             {
-              label: `O‘qituvchilar`,
+              label: `Talabalar`,
               key: "1",
-              children: <Teachers />,
+              children: <Students />,
             },
             {
-              label: `Talabalar`,
+              label: `O‘qituvchilar`,
               key: "2",
-              children: <Students />,
+              children: <Teachers />,
             },
             {
               label: `Struktura`,

@@ -44,12 +44,6 @@ $gray: rgba(255, 255, 255, 0.56);
   justify-content: space-between;
 }
 
-@media (max-width: 1300px) {
-  .container {
-    max-width: 90%;
-  }
-}
-
 button {
   transition: 0.3s ease-in-out;
   &:active {

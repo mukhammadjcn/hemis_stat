@@ -94,7 +94,18 @@ const Struktura: React.FC = () => {
       ],
     },
     autoFit: true,
-    label: false,
+    label: {
+      formatter: ({ name }) => {
+        return name !== "Asosiy" ? name : "";
+      },
+      offsetY: 10,
+      style: {
+        fontSize: 13,
+        textAlign: "center",
+        fill: "white",
+      },
+    },
+
     legend: false,
     hierarchyConfig: {
       sort: (a, b) => b.depth - a.depth,

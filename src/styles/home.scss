@@ -200,13 +200,39 @@
 }
 
 @media (max-width: 1080px) {
-}
-
-@media (max-width: 780px) {
+  .home {
+    &__teachers {
+      .students__top {
+        flex-wrap: wrap;
+        .student {
+          flex-basis: 30%;
+        }
+      }
+      &-pie {
+        gap: 36px;
+        flex-direction: column;
+        & > div {
+          &:nth-child(2) {
+            margin: 0;
+            padding: 0;
+            border: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 600px) {
-}
-
-@media (max-width: 500px) {
+  .home {
+    &__teachers {
+      .students__top {
+        gap: 16px;
+        flex-direction: column;
+      }
+      & > .row {
+        flex-direction: column;
+      }
+    }
+  }
 }
