@@ -109,6 +109,10 @@ const Teachers: React.FC = () => {
       },
     },
     color: ["#1677FF", "#52C41A", "#EB2F96", "#FA8C16", "#722ED1", "#F5222D"],
+    legend: {
+      itemHeight: 12,
+      position: "bottom",
+    },
   };
   const configIlmiyPie: PieConfig = {
     height: 360,
