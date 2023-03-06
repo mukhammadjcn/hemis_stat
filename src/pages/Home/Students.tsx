@@ -16,11 +16,11 @@ const Students: React.FC = () => {
     data: [
       {
         type: "Bakalavr",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
       },
       {
         type: "Magistr",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
       },
     ],
     innerRadius: 0.8,
@@ -34,6 +34,7 @@ const Students: React.FC = () => {
           whiteSpace: "pre-wrap",
           overflow: "hidden",
           textOverflow: "ellipsis",
+          color: "white",
         },
         content: "567 ta",
       },
@@ -42,6 +43,16 @@ const Students: React.FC = () => {
     legend: {
       itemHeight: 12,
       position: "bottom",
+      color: "#ffffff",
+      itemName: {
+        style: {
+          color: "white",
+        },
+      },
+      fill: "#ffffff",
+    },
+    style: {
+      color: "white",
     },
   };
 
@@ -77,6 +88,9 @@ const Students: React.FC = () => {
       itemHeight: 12,
       position: "bottom",
     },
+    barStyle: {
+      radius: [6, 6, 6, 6],
+    },
   };
 
   const configNationColumn: ColumnConfig = {
@@ -84,32 +98,32 @@ const Students: React.FC = () => {
       {
         name: "Bakalavr",
         darajasi: "O‘zbekiston fuqarosi",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
         darajasi: "Xorijiy davlat fuqarosi",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
         darajasi: "Fuqaroligi yo‘q shaxs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
         darajasi: "O‘zbekiston fuqarosi",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
         darajasi: "Xorijiy davlat fuqarosi",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
         darajasi: "Fuqaroligi yo‘q shaxs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
     ],
     isGroup: true,
@@ -121,6 +135,9 @@ const Students: React.FC = () => {
       position: "bottom",
       itemHeight: 12,
     },
+    columnStyle: {
+      radius: [6, 6, 6, 6],
+    },
   };
 
   const kamalakColumn: ColumnConfig = {
@@ -128,122 +145,122 @@ const Students: React.FC = () => {
       {
         name: "Kunduzgi",
         darajasi: "1-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kunduzgi",
         darajasi: "2-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kunduzgi",
         darajasi: "3-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kunduzgi",
         darajasi: "4-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kunduzgi",
         darajasi: "5-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kunduzgi",
         darajasi: "6-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "1-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "2-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "3-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "4-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "5-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "6-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kechki",
         darajasi: "1-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kechki",
         darajasi: "2-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kechki",
         darajasi: "3-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kechki",
         darajasi: "4-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kechki",
         darajasi: "5-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kechki",
         darajasi: "6-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Sirtqi",
         darajasi: "1-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Sirtqi",
         darajasi: "2-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Sirtqi",
         darajasi: "3-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Sirtqi",
         darajasi: "4-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Sirtqi",
         darajasi: "5-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Sirtqi",
         darajasi: "6-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
     ],
     isStack: true,
@@ -255,6 +272,9 @@ const Students: React.FC = () => {
       position: "bottom",
       itemHeight: 12,
     },
+    columnStyle: {
+      radius: [6, 6, 6, 6],
+    },
   };
 
   const kamalakTypeColumn: ColumnConfig = {
@@ -262,63 +282,63 @@ const Students: React.FC = () => {
       {
         name: "Kunduzgi",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kunduzgi",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kechki",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kechki",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
 
       {
         name: "Sirtqi",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Sirtqi",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Qo'shma",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Qo'shma",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Masofaviy",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Masofaviy",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
     ],
     isStack: true,
@@ -330,6 +350,9 @@ const Students: React.FC = () => {
       position: "bottom",
       itemHeight: 12,
     },
+    columnStyle: {
+      radius: [6, 6, 6, 6],
+    },
   };
 
   const configColumnHududlar: ColumnConfig = {
@@ -337,146 +360,146 @@ const Students: React.FC = () => {
       {
         name: "Bakalavr",
         darajasi: "Qoraqalpog‘iston Respublikasi",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Xorazm viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Xorazm",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Buxoro viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Buxoro",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Navoiy viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Navoiy",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Qashqadaryo viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Qashqadaryo",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Surxondaryo viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Surxondaryo",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Samarqand viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Samarqand",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Jizzax viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Jizzax",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Sirdaryo viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Sirdaryo",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Farg‘ona viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Farg‘ona",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Namangan viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Namangan",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Andijon viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Andijon",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
-        darajasi: "Toshkent viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Toshkent",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bakalavr",
         darajasi: "Toshkent shahri",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
 
       {
         name: "Magistr",
         darajasi: "Qoraqalpog‘iston Respublikasi",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Xorazm viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Xorazm",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Buxoro viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Buxoro",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Navoiy viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Navoiy",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Qashqadaryo viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Qashqadaryo",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Surxondaryo viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Surxondaryo",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Samarqand viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Samarqand",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Jizzax viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Jizzax",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Sirdaryo viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Sirdaryo",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Farg‘ona viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Farg‘ona",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Namangan viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Namangan",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Andijon viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Andijon",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
-        darajasi: "Toshkent viloyati",
-        soni: Math.floor(Math.random() * 20),
+        darajasi: "Toshkent",
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Magistr",
         darajasi: "Toshkent shahri",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
     ],
-    isGroup: true,
+    isStack: true,
     yField: "soni",
     xField: "darajasi",
     seriesField: "name",
@@ -485,58 +508,61 @@ const Students: React.FC = () => {
       position: "bottom",
       itemHeight: 12,
     },
+    columnStyle: {
+      radius: [6, 6, 6, 6],
+    },
   };
 
   const configBar: BarConfig = {
     data: [
       {
         year: "O‘z uyida",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
         type: "Bakalavr",
       },
       {
         year: "Qarindoshing uyida",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
         type: "Bakalavr",
       },
       {
         year: "Tanishing uyida",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
         type: "Bakalavr",
       },
       {
         year: "Ijaradagi uyda",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
         type: "Bakalavr",
       },
       {
         year: "Talabalar turar joyida",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
         type: "Bakalavr",
       },
       {
         year: "O‘z uyida",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
         type: "Magistr",
       },
       {
         year: "Qarindoshing uyida",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
         type: "Magistr",
       },
       {
         year: "Tanishing uyida",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
         type: "Magistr",
       },
       {
         year: "Ijaradagi uyda",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
         type: "Magistr",
       },
       {
         year: "Talabalar turar joyida",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
         type: "Magistr",
       },
     ],
@@ -548,6 +574,9 @@ const Students: React.FC = () => {
     legend: {
       itemHeight: 12,
       position: "bottom",
+    },
+    barStyle: {
+      radius: [6, 6, 6, 6],
     },
   };
 
@@ -635,6 +664,7 @@ const Students: React.FC = () => {
           <div className="flex">
             <h2 className="title">Talabalar (To‘lov shakli bo‘yicha)</h2>
             <Segmented
+              style={{ background: "#4B5364" }}
               options={["Davlat granti", "To‘lov shartnoma"]}
               defaultValue="Davlat granti"
             />

@@ -61,6 +61,7 @@ const Teachers: React.FC = () => {
           whiteSpace: "pre-wrap",
           overflow: "hidden",
           textOverflow: "ellipsis",
+          color: "white",
         },
         content: "567 ta",
       },
@@ -104,6 +105,7 @@ const Teachers: React.FC = () => {
           whiteSpace: "pre-wrap",
           overflow: "hidden",
           textOverflow: "ellipsis",
+          color: "white",
         },
         content: "567 ta",
       },
@@ -183,6 +185,7 @@ const Teachers: React.FC = () => {
       style: {
         borderRadius: 10,
       },
+      radius: [6, 6, 6, 6],
     },
   };
 
@@ -237,6 +240,9 @@ const Teachers: React.FC = () => {
     legend: {
       itemHeight: 12,
       position: "bottom",
+    },
+    barStyle: {
+      radius: [6, 6, 6, 6],
     },
   };
   const configAgeBar: BarConfig = {
@@ -311,6 +317,9 @@ const Teachers: React.FC = () => {
       itemHeight: 12,
       position: "bottom",
     },
+    barStyle: {
+      radius: [6, 6, 6, 6],
+    },
   };
 
   const configFunnel: FunnelConfig = {
@@ -381,7 +390,7 @@ const Teachers: React.FC = () => {
             <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha</h2>
             <h3 className="info">
               Umumiy
-              <Switch style={{ marginLeft: 16 }} />
+              <Switch style={{ marginLeft: 16, background: "#4B5364" }} />
             </h3>
           </div>
           <Column {...configColumn} />

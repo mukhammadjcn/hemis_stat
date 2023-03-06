@@ -1,5 +1,5 @@
 import { Tabs } from "antd";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "src/components/home/Header";
 import Struktura from "./Struktura";
 import Students from "./Students";
@@ -11,8 +11,8 @@ const Home: React.FC = () => {
       <Header />
       <div className="home container">
         <Tabs
+          style={{ color: "white" }}
           defaultActiveKey="1"
-          type="card"
           items={[
             {
               label: `Talabalar`,

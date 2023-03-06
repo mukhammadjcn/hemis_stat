@@ -15,11 +15,11 @@ const Struktura: React.FC = () => {
     data: [
       {
         type: "Bakalavr",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
       },
       {
         type: "Magistr",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
       },
     ],
     appendPadding: 10,
@@ -37,23 +37,23 @@ const Struktura: React.FC = () => {
     data: [
       {
         name: "Fakultetlar",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Kafedralar",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Boshqarmalar",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Bo‘limlar",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "Markazlar",
-        value: Math.floor(Math.random() * 20),
+        value: Math.floor(Math.random() * 20) + 20,
       },
     ],
     yField: "name",
@@ -64,33 +64,36 @@ const Struktura: React.FC = () => {
       itemHeight: 12,
       position: "bottom",
     },
+    barStyle: {
+      radius: [6, 6, 6, 6],
+    },
   };
 
   const configColumn: ColumnConfig = {
     data: [
       {
         name: "1-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "2-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "3-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "4-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "5-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
       {
         name: "6-kurs",
-        soni: Math.floor(Math.random() * 20),
+        soni: Math.floor(Math.random() * 20) + 20,
       },
     ],
     yField: "soni",
@@ -101,8 +104,11 @@ const Struktura: React.FC = () => {
       position: "bottom",
       itemHeight: 12,
     },
+    columnStyle: {
+      radius: [6, 6, 6, 6],
+    },
   };
-  const apexCOnfig = {
+  const apexConfig = {
     series: [
       {
         data: [
@@ -159,8 +165,8 @@ const Struktura: React.FC = () => {
           </div>
 
           <Chart
-            series={apexCOnfig.series}
-            options={apexCOnfig.options}
+            series={apexConfig.series}
+            options={apexConfig.options}
             type="treemap"
             height={360}
           />
