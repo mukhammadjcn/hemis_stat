@@ -67,6 +67,71 @@ const Teachers: React.FC = () => {
     },
     color: ["#1677FF", "#52C41A", "#EB2F96", "#FA8C16", "#722ED1", "#F5222D"],
   };
+  const configRahbarPie: PieConfig = {
+    radius: 0.9,
+    height: 360,
+    data: [
+      {
+        type: "Prorektorlar",
+        value: 27,
+      },
+      {
+        type: "Dekanlar",
+        value: 25,
+      },
+      {
+        type: "Kafedra mudiri",
+        value: 18,
+      },
+    ],
+    innerRadius: 0.6,
+    appendPadding: 10,
+    colorField: "type",
+    angleField: "value",
+    label: {
+      type: "inner",
+      offset: "-50%",
+      content: "{value}",
+      style: {
+        textAlign: "center",
+        fontSize: 0,
+      },
+    },
+    statistic: {
+      title: false,
+      content: {
+        style: {
+          whiteSpace: "pre-wrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        },
+        content: "567 ta",
+      },
+    },
+    color: ["#1677FF", "#52C41A", "#EB2F96", "#FA8C16", "#722ED1", "#F5222D"],
+  };
+  const configIlmiyPie: PieConfig = {
+    height: 360,
+    data: [
+      {
+        type: "O'qituvchilar (Ilmiy darajali)",
+        value: Math.floor(Math.random() * 1000),
+      },
+      {
+        type: "O'qituvchilar (Ilmiy darajasiz)",
+        value: Math.floor(Math.random() * 1000),
+      },
+    ],
+    appendPadding: 10,
+    colorField: "type",
+    angleField: "value",
+
+    color: ["#1677FF", "#52C41A"],
+    legend: {
+      itemHeight: 12,
+      position: "bottom",
+    },
+  };
 
   const configColumn: ColumnConfig = {
     data: [
@@ -329,6 +394,25 @@ const Teachers: React.FC = () => {
           <Bar {...configBar} />
         </section>
       </div>
+
+      <div className="row">
+        <section className="home__teachers-bar">
+          <div className="flex">
+            <h2 className="title">Raxbar xodimlar</h2>
+          </div>
+          <Pie {...configRahbarPie} />
+        </section>
+        <section className="home__teachers-bar">
+          <div className="flex">
+            <h2 className="title">Ilmiy salohiyat</h2>
+            <h3>
+              Jami: <b>200 ta</b>
+            </h3>
+          </div>
+          <Pie {...configIlmiyPie} />
+        </section>
+      </div>
+
       <div className="row">
         <section className="home__teachers-bar">
           <div className="flex">
