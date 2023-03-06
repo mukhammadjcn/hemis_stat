@@ -6,6 +6,7 @@ import {
   BarConfig,
   ColumnConfig,
 } from "@ant-design/plots";
+import { Segmented } from "antd";
 import React from "react";
 
 const Students: React.FC = () => {
@@ -44,36 +45,70 @@ const Students: React.FC = () => {
     },
   };
 
-  const configColumn: ColumnConfig = {
+  const configAgeBar: BarConfig = {
     data: [
       {
-        name: "Erkak",
-        darajasi: "Darajasiz",
+        year: "30 yoshgacha",
+        value: 1000,
+        type: "Erkak",
+      },
+      {
+        year: "30 yoshdan katta",
+        value: 2000,
+        type: "Erkak",
+      },
+      {
+        year: "30 yoshgacha",
+        value: 3000,
+        type: "Ayol",
+      },
+      {
+        year: "30 yoshdan katta",
+        value: 650,
+        type: "Ayol",
+      },
+    ],
+    isStack: true,
+    yField: "year",
+    xField: "value",
+    seriesField: "type",
+    color: ["#1677FF", "#EB2F96"],
+    legend: {
+      itemHeight: 12,
+      position: "bottom",
+    },
+  };
+
+  const configNationColumn: ColumnConfig = {
+    data: [
+      {
+        name: "Bakalavr",
+        darajasi: "O‘zbekiston fuqarosi",
         soni: Math.floor(Math.random() * 20),
       },
       {
-        name: "Erkak",
-        darajasi: "Fan nomzodi, PHD",
+        name: "Bakalavr",
+        darajasi: "Xorijiy davlat fuqarosi",
         soni: Math.floor(Math.random() * 20),
       },
       {
-        name: "Erkak",
-        darajasi: "Fan doktori, DCs",
+        name: "Bakalavr",
+        darajasi: "Fuqaroligi yo‘q shaxs",
         soni: Math.floor(Math.random() * 20),
       },
       {
-        name: "Ayol",
-        darajasi: "Darajasiz",
+        name: "Magistr",
+        darajasi: "O‘zbekiston fuqarosi",
         soni: Math.floor(Math.random() * 20),
       },
       {
-        name: "Ayol",
-        darajasi: "Fan nomzodi, PHD",
+        name: "Magistr",
+        darajasi: "Xorijiy davlat fuqarosi",
         soni: Math.floor(Math.random() * 20),
       },
       {
-        name: "Ayol",
-        darajasi: "Fan doktori, DCs",
+        name: "Magistr",
+        darajasi: "Fuqaroligi yo‘q shaxs",
         soni: Math.floor(Math.random() * 20),
       },
     ],
@@ -216,6 +251,81 @@ const Students: React.FC = () => {
     xField: "darajasi",
     seriesField: "name",
     color: ["#13C2C2", "#EB2F96", "#FADB14", "#722ED1", "#F5222D"],
+    legend: {
+      position: "bottom",
+      itemHeight: 12,
+    },
+  };
+
+  const kamalakTypeColumn: ColumnConfig = {
+    data: [
+      {
+        name: "Kunduzgi",
+        darajasi: "Erkak",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kunduzgi",
+        darajasi: "Ayol",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kechki",
+        darajasi: "Erkak",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Kechki",
+        darajasi: "Ayol",
+        soni: Math.floor(Math.random() * 20),
+      },
+
+      {
+        name: "Sirtqi",
+        darajasi: "Erkak",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Sirtqi",
+        darajasi: "Ayol",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Maxsus sirtqi",
+        darajasi: "Erkak",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Maxsus sirtqi",
+        darajasi: "Ayol",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Qo'shma",
+        darajasi: "Erkak",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Qo'shma",
+        darajasi: "Ayol",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Masofaviy",
+        darajasi: "Erkak",
+        soni: Math.floor(Math.random() * 20),
+      },
+      {
+        name: "Masofaviy",
+        darajasi: "Ayol",
+        soni: Math.floor(Math.random() * 20),
+      },
+    ],
+    isStack: true,
+    yField: "soni",
+    xField: "name",
+    seriesField: "darajasi",
+    color: ["#1677FF", "#EB2F96", "#FADB14", "#722ED1", "#F5222D"],
     legend: {
       position: "bottom",
       itemHeight: 12,
@@ -380,34 +490,54 @@ const Students: React.FC = () => {
   const configBar: BarConfig = {
     data: [
       {
-        year: "Unvonsiz",
+        year: "O‘z uyida",
         value: Math.floor(Math.random() * 20),
-        type: "Erkak",
+        type: "Bakalavr",
       },
       {
-        year: "Dotsent",
+        year: "Qarindoshing uyida",
         value: Math.floor(Math.random() * 20),
-        type: "Erkak",
+        type: "Bakalavr",
       },
       {
-        year: "Professor",
+        year: "Tanishing uyida",
         value: Math.floor(Math.random() * 20),
-        type: "Erkak",
+        type: "Bakalavr",
       },
       {
-        year: "Unvonsiz",
+        year: "Ijaradagi uyda",
         value: Math.floor(Math.random() * 20),
-        type: "Ayol",
+        type: "Bakalavr",
       },
       {
-        year: "Dotsent",
+        year: "Talabalar turar joyida",
         value: Math.floor(Math.random() * 20),
-        type: "Ayol",
+        type: "Bakalavr",
       },
       {
-        year: "Professor",
+        year: "O‘z uyida",
         value: Math.floor(Math.random() * 20),
-        type: "Ayol",
+        type: "Magistr",
+      },
+      {
+        year: "Qarindoshing uyida",
+        value: Math.floor(Math.random() * 20),
+        type: "Magistr",
+      },
+      {
+        year: "Tanishing uyida",
+        value: Math.floor(Math.random() * 20),
+        type: "Magistr",
+      },
+      {
+        year: "Ijaradagi uyda",
+        value: Math.floor(Math.random() * 20),
+        type: "Magistr",
+      },
+      {
+        year: "Talabalar turar joyida",
+        value: Math.floor(Math.random() * 20),
+        type: "Magistr",
       },
     ],
     isStack: true,
@@ -498,11 +628,17 @@ const Students: React.FC = () => {
       </div>
       <div className="row">
         <section className="home__teachers-bar">
-          <h2 className="title">Talabalar (To‘lov shakli bo‘yicha)</h2>
-          <Pie {...configPie} />
+          <h2 className="title">Talaba ( Yosh bo‘yicha)</h2>
+          <Bar {...configAgeBar} />
         </section>
         <section className="home__teachers-bar">
-          <h2 className="title">Talabalar (To‘lov shakli bo‘yicha)</h2>
+          <div className="flex">
+            <h2 className="title">Talabalar (To‘lov shakli bo‘yicha)</h2>
+            <Segmented
+              options={["Davlat granti", "To‘lov shartnoma"]}
+              defaultValue="Davlat granti"
+            />
+          </div>
           <Pie {...configPie} />
         </section>
       </div>
@@ -514,21 +650,27 @@ const Students: React.FC = () => {
       </div>
       <div className="row">
         <section className="home__teachers-bar">
-          <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha 1</h2>
+          <h2 className="title">Talaba ( Kurslar bo‘yicha)</h2>
           <Column {...kamalakColumn} />
         </section>
         <section className="home__teachers-bar">
-          <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha 2</h2>
-          <Column {...kamalakColumn} />
+          <h2 className="title">Talaba ( Ta’lim shakli bo‘yicha)</h2>
+          <Column {...kamalakTypeColumn} />
         </section>
       </div>
       <div className="row">
         <section className="home__teachers-bar">
-          <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha</h2>
-          <Column {...configColumn} />
+          <h2 className="title">Talaba ( Fuqarolik bo‘yicha)</h2>
+          <Column {...configNationColumn} />
         </section>
         <section className="home__teachers-bar">
-          <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha</h2>
+          <div className="flex">
+            <h2 className="title">Talabalar turar joy bo‘yicha</h2>
+            <h3>
+              Jami: <b>6000 ta</b>
+            </h3>
+          </div>
+
           <Bar {...configBar} />
         </section>
       </div>

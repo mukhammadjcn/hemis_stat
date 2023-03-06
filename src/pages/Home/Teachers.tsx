@@ -8,6 +8,7 @@ import {
   ColumnConfig,
   FunnelConfig,
 } from "@ant-design/plots";
+import { Switch } from "antd";
 import React from "react";
 
 const Teachers: React.FC = () => {
@@ -129,6 +130,11 @@ const Teachers: React.FC = () => {
         type: "Erkak",
       },
       {
+        year: "Katta ilmiy xodim",
+        value: 8,
+        type: "Erkak",
+      },
+      {
         year: "Professor",
         value: 16,
         type: "Erkak",
@@ -141,6 +147,11 @@ const Teachers: React.FC = () => {
       {
         year: "Dotsent",
         value: 14,
+        type: "Ayol",
+      },
+      {
+        year: "Katta ilmiy xodim",
+        value: 12,
         type: "Ayol",
       },
       {
@@ -159,14 +170,87 @@ const Teachers: React.FC = () => {
       position: "bottom",
     },
   };
+  const configAgeBar: BarConfig = {
+    data: [
+      {
+        year: "24-29 yosh",
+        value: 18,
+        type: "Erkak",
+      },
+      {
+        year: "30-35 yosh",
+        value: 12,
+        type: "Erkak",
+      },
+      {
+        year: "36-41 yosh",
+        value: 8,
+        type: "Erkak",
+      },
+      {
+        year: "42-47 yosh",
+        value: 16,
+        type: "Erkak",
+      },
+      {
+        year: "48-53 yosh",
+        value: 16,
+        type: "Erkak",
+      },
+      {
+        year: "66+ yosh",
+        value: 16,
+        type: "Erkak",
+      },
+      {
+        year: "24-29 yosh",
+        value: 16,
+        type: "Ayol",
+      },
+      {
+        year: "30-35 yosh",
+        value: 14,
+        type: "Ayol",
+      },
+      {
+        year: "36-41 yosh",
+        value: 12,
+        type: "Ayol",
+      },
+      {
+        year: "42-47 yosh",
+        value: 20,
+        type: "Ayol",
+      },
+      {
+        year: "48-53 yosh",
+        value: 16,
+        type: "Ayol",
+      },
+      {
+        year: "66+ yosh",
+        value: 16,
+        type: "Ayol",
+      },
+    ],
+    isStack: true,
+    yField: "year",
+    xField: "value",
+    seriesField: "type",
+    color: ["#1677FF", "#EB2F96"],
+    legend: {
+      itemHeight: 12,
+      position: "bottom",
+    },
+  };
 
   const configFunnel: FunnelConfig = {
     data: [
       { name: "Asosiy ish joyi", number: 4500 },
-      { name: "O‘rindoshlik (ichki asosiy)", number: 3200 },
-      { name: "O‘rindoshlik ( ichki-qo‘shimcha)", number: 2400 },
-      { name: "O‘rindoshlik tashqi", number: 1200 },
-      { name: "Soatbay", number: 600 },
+      { name: "O‘rindoshlik (ichki asosiy)", number: 3500 },
+      { name: "O‘rindoshlik ( ichki-qo‘shimcha)", number: 3000 },
+      { name: "O‘rindoshlik tashqi", number: 2500 },
+      { name: "Soatbay", number: 1000 },
     ],
     xField: "name",
     yField: "number",
@@ -224,21 +308,44 @@ const Teachers: React.FC = () => {
       </section>
       <div className="row">
         <section className="home__teachers-bar">
-          <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha</h2>
+          <div className="flex">
+            <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha</h2>
+            <h3 className="info">
+              Umumiy
+              <Switch style={{ marginLeft: 16 }} />
+            </h3>
+          </div>
           <Column {...configColumn} />
         </section>
         <section className="home__teachers-bar">
-          <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha</h2>
+          <div className="flex">
+            <h2 className="title">
+              O‘qituvchilar ilmiy(unvon) daraja bo‘yicha
+            </h2>
+            <h3>
+              Jami: <b>6000 ta</b>
+            </h3>
+          </div>
           <Bar {...configBar} />
         </section>
       </div>
       <div className="row">
         <section className="home__teachers-bar">
-          <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha</h2>
-          <Bar {...configBar} />
+          <div className="flex">
+            <h2 className="title">O‘qituvchilar yoshi bo‘yicha</h2>
+            <h3>
+              Jami: <b>6000 ta</b>
+            </h3>
+          </div>
+          <Bar {...configAgeBar} />
         </section>
         <section className="home__teachers-bar">
-          <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha</h2>
+          <div className="flex">
+            <h2 className="title">O‘qituvchilar mehnat shakli bo‘yicha</h2>
+            <h3>
+              Jami: <b>6000 ta</b>
+            </h3>
+          </div>
           <Funnel {...configFunnel} />
         </section>
       </div>

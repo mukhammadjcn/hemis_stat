@@ -5,10 +5,9 @@ import {
   PieConfig,
   BarConfig,
   ColumnConfig,
-  CirclePacking,
-  CirclePackingConfig,
 } from "@ant-design/plots";
 import React from "react";
+import Chart from "react-apexcharts";
 
 const Struktura: React.FC = () => {
   const configPie: PieConfig = {
@@ -67,52 +66,6 @@ const Struktura: React.FC = () => {
     },
   };
 
-  const configCircle: CirclePackingConfig = {
-    data: {
-      name: "Asosiy",
-      children: [
-        {
-          name: "Amaliy",
-          value: Math.floor(Math.random() * 20),
-        },
-        {
-          name: "Kafedralar",
-          value: Math.floor(Math.random() * 20),
-        },
-        {
-          name: "Boshqarmalar",
-          value: Math.floor(Math.random() * 20),
-        },
-        {
-          name: "Bo‘limlar",
-          value: Math.floor(Math.random() * 20),
-        },
-        {
-          name: "Markazlar",
-          value: Math.floor(Math.random() * 20),
-        },
-      ],
-    },
-    autoFit: true,
-    label: {
-      formatter: ({ name }) => {
-        return name !== "Asosiy" ? name : "";
-      },
-      offsetY: 10,
-      style: {
-        fontSize: 13,
-        textAlign: "center",
-        fill: "white",
-      },
-    },
-
-    legend: false,
-    hierarchyConfig: {
-      sort: (a, b) => b.depth - a.depth,
-    },
-    color: "rgb(230,244,255)-rgb(56,158,13)-rgb(83,29,171)",
-  };
-
   const configColumn: ColumnConfig = {
     data: [
       {
@@ -149,6 +102,46 @@ const Struktura: React.FC = () => {
       itemHeight: 12,
     },
   };
+  const apexCOnfig = {
+    series: [
+      {
+        data: [
+          {
+            x: "Amaliy",
+            y: 48,
+          },
+          {
+            x: "Seminar",
+            y: 24,
+          },
+          {
+            x: "Ma’ruza",
+            y: 32,
+          },
+          {
+            x: "Laboratoriya",
+            y: 30,
+          },
+          {
+            x: "Komputer",
+            y: 15,
+          },
+          {
+            x: "Zamonaviy",
+            y: 64,
+          },
+        ],
+      },
+    ],
+    options: {
+      chart: {
+        id: "treemap",
+        toolbar: {
+          show: false,
+        },
+      },
+    },
+  };
 
   return (
     <div className="home__teachers">
@@ -158,17 +151,40 @@ const Struktura: React.FC = () => {
           <Column {...configColumn} />
         </section>
         <section className="home__teachers-bar">
-          <h2 className="title">Auditoriyalar soni</h2>
-          <CirclePacking {...configCircle} />
+          <div className="flex">
+            <h2 className="title">Auditoriyalar soni</h2>
+            <h3>
+              Jami: <b>6000 ta</b>
+            </h3>
+          </div>
+
+          <Chart
+            series={apexCOnfig.series}
+            options={apexCOnfig.options}
+            type="treemap"
+            height={360}
+          />
         </section>
       </div>
       <div className="row">
         <section className="home__teachers-bar">
-          <h2 className="title">Yo‘nalishlar</h2>
+          <div className="flex">
+            <h2 className="title">Yo‘nalishlar</h2>
+            <h3>
+              Jami: <b>6000 ta</b>
+            </h3>
+          </div>
+
           <Pie {...configPie} />
         </section>
         <section className="home__teachers-bar">
-          <h2 className="title">Bo‘limlar</h2>
+          <div className="flex">
+            <h2 className="title">Bo‘limlar</h2>
+            <h3>
+              Jami: <b>6000 ta</b>
+            </h3>
+          </div>
+
           <Bar {...configBar} />
         </section>
       </div>
