@@ -46,7 +46,7 @@ const Students: React.FC = () => {
       color: "#ffffff",
       itemName: {
         style: {
-          color: "white",
+          fill: "white",
         },
       },
       fill: "#ffffff",
@@ -87,6 +87,11 @@ const Students: React.FC = () => {
     legend: {
       itemHeight: 12,
       position: "bottom",
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
     barStyle: {
       radius: [6, 6, 6, 6],
@@ -134,6 +139,11 @@ const Students: React.FC = () => {
     legend: {
       position: "bottom",
       itemHeight: 12,
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
     columnStyle: {
       radius: [6, 6, 6, 6],
@@ -271,6 +281,11 @@ const Students: React.FC = () => {
     legend: {
       position: "bottom",
       itemHeight: 12,
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
     columnStyle: {
       radius: [6, 6, 6, 6],
@@ -349,6 +364,11 @@ const Students: React.FC = () => {
     legend: {
       position: "bottom",
       itemHeight: 12,
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
     columnStyle: {
       radius: [6, 6, 6, 6],
@@ -507,6 +527,11 @@ const Students: React.FC = () => {
     legend: {
       position: "bottom",
       itemHeight: 12,
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
     columnStyle: {
       radius: [6, 6, 6, 6],
@@ -574,6 +599,11 @@ const Students: React.FC = () => {
     legend: {
       itemHeight: 12,
       position: "bottom",
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
     barStyle: {
       radius: [6, 6, 6, 6],

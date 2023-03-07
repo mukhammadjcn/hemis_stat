@@ -11,7 +11,7 @@ const Home: React.FC = () => {
       <Header />
       <div className="home container">
         <Tabs
-          style={{ color: "white" }}
+          className="home_tabs"
           defaultActiveKey="1"
           items={[
             {

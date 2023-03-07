@@ -67,6 +67,13 @@ const Teachers: React.FC = () => {
       },
     },
     color: ["#1677FF", "#52C41A", "#13C2C2", "#FA8C16", "#722ED1", "#F5222D"],
+    legend: {
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
+    },
   };
   const configRahbarPie: PieConfig = {
     radius: 0.9,
@@ -114,6 +121,11 @@ const Teachers: React.FC = () => {
     legend: {
       itemHeight: 12,
       position: "bottom",
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
   };
   const configIlmiyPie: PieConfig = {
@@ -136,6 +148,11 @@ const Teachers: React.FC = () => {
     legend: {
       itemHeight: 12,
       position: "bottom",
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
   };
 
@@ -180,6 +197,11 @@ const Teachers: React.FC = () => {
     legend: {
       position: "bottom",
       itemHeight: 12,
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
     columnStyle: {
       style: {
@@ -240,6 +262,11 @@ const Teachers: React.FC = () => {
     legend: {
       itemHeight: 12,
       position: "bottom",
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
     barStyle: {
       radius: [6, 6, 6, 6],
@@ -316,6 +343,11 @@ const Teachers: React.FC = () => {
     legend: {
       itemHeight: 12,
       position: "bottom",
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
     },
     barStyle: {
       radius: [6, 6, 6, 6],
