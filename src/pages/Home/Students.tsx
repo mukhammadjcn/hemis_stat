@@ -8,6 +8,7 @@ import {
 } from "@ant-design/plots";
 import { Segmented } from "antd";
 import React from "react";
+import ReactEcharts from "echarts-for-react";
 
 const Students: React.FC = () => {
   const configPie: PieConfig = {
@@ -39,7 +40,7 @@ const Students: React.FC = () => {
         content: "567 ta",
       },
     },
-    color: ["#1677FF", "#52C41A"],
+    color: ["#7D7AFF", "#30DB5B"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -83,7 +84,7 @@ const Students: React.FC = () => {
     yField: "year",
     xField: "value",
     seriesField: "type",
-    color: ["#1677FF", "#52C41A"],
+    color: ["#70D7FF", "#DA8FFF"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -95,6 +96,39 @@ const Students: React.FC = () => {
     },
     barStyle: {
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
+    },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+      subTickLine: {
+        style: {
+          stroke: "black",
+          lineWidth: 2,
+          lineDash: [4, 5],
+          strokeOpacity: 0.7,
+          shadowColor: "black",
+          shadowBlur: 10,
+          shadowOffsetX: 5,
+          shadowOffsetY: 5,
+          cursor: "pointer",
+        },
+      },
     },
   };
 
@@ -135,7 +169,7 @@ const Students: React.FC = () => {
     yField: "soni",
     xField: "darajasi",
     seriesField: "name",
-    color: ["#1677FF", "#52C41A"],
+    color: ["#7D7AFF", "#30DB5B"],
     legend: {
       position: "bottom",
       itemHeight: 12,
@@ -147,6 +181,7 @@ const Students: React.FC = () => {
     },
     columnStyle: {
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
     },
   };
 
@@ -277,7 +312,7 @@ const Students: React.FC = () => {
     yField: "soni",
     xField: "darajasi",
     seriesField: "name",
-    color: ["#13C2C2", "#52C41A", "#FADB14", "#722ED1", "#F5222D"],
+    color: ["#DA8FFF", "#FF6482", "#FFD426", "#7D7AFF", "#30DB5B"],
     legend: {
       position: "bottom",
       itemHeight: 12,
@@ -289,6 +324,7 @@ const Students: React.FC = () => {
     },
     columnStyle: {
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
     },
   };
 
@@ -360,7 +396,7 @@ const Students: React.FC = () => {
     yField: "soni",
     xField: "name",
     seriesField: "darajasi",
-    color: ["#1677FF", "#52C41A", "#FADB14", "#722ED1", "#F5222D"],
+    color: ["#DA8FFF", "#70D7FF"],
     legend: {
       position: "bottom",
       itemHeight: 12,
@@ -372,6 +408,7 @@ const Students: React.FC = () => {
     },
     columnStyle: {
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
     },
   };
 
@@ -379,7 +416,7 @@ const Students: React.FC = () => {
     data: [
       {
         name: "Bakalavr",
-        darajasi: "Qoraqalpog‘iston Respublikasi",
+        darajasi: "Qoraqalpog‘iston",
         soni: Math.floor(Math.random() * 20) + 20,
       },
       {
@@ -450,7 +487,7 @@ const Students: React.FC = () => {
 
       {
         name: "Magistr",
-        darajasi: "Qoraqalpog‘iston Respublikasi",
+        darajasi: "Qoraqalpog‘iston",
         soni: Math.floor(Math.random() * 20) + 20,
       },
       {
@@ -523,7 +560,7 @@ const Students: React.FC = () => {
     yField: "soni",
     xField: "darajasi",
     seriesField: "name",
-    color: ["#1677FF", "#52C41A"],
+    color: ["#7D7AFF", "#30DB5B"],
     legend: {
       position: "bottom",
       itemHeight: 12,
@@ -535,6 +572,7 @@ const Students: React.FC = () => {
     },
     columnStyle: {
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
     },
   };
 
@@ -595,7 +633,7 @@ const Students: React.FC = () => {
     yField: "year",
     xField: "value",
     seriesField: "type",
-    color: ["#1677FF", "#52C41A"],
+    color: ["#7D7AFF", "#30DB5B"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -607,7 +645,48 @@ const Students: React.FC = () => {
     },
     barStyle: {
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
     },
+  };
+
+  const option = {
+    tooltip: {
+      trigger: "item",
+    },
+    legend: {
+      bottom: "0%",
+      left: "center",
+      textStyle: {
+        color: "white",
+      },
+    },
+    series: [
+      {
+        name: "",
+        type: "pie",
+        radius: ["80%", "65%"],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 8,
+        },
+        label: {
+          show: false,
+          position: "center",
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 28,
+            color: "white",
+          },
+        },
+        data: [
+          { value: 1048, name: "Bakalavr" },
+          { value: 735, name: "Magistr" },
+        ],
+        color: ["#7D7AFF", "#30DB5B"],
+      },
+    ],
   };
 
   return (
@@ -699,23 +778,13 @@ const Students: React.FC = () => {
               defaultValue="Davlat granti"
             />
           </div>
-          <Pie {...configPie} />
+          <ReactEcharts option={option} style={{ height: 400 }} />
         </section>
       </div>
       <div className="row">
         <section className="home__teachers-bar">
           <h2 className="title">Talaba ( Hududlar bo‘yicha)</h2>
           <Column {...configColumnHududlar} />
-        </section>
-      </div>
-      <div className="row">
-        <section className="home__teachers-bar">
-          <h2 className="title">Talaba ( Kurslar bo‘yicha)</h2>
-          <Column {...kamalakColumn} />
-        </section>
-        <section className="home__teachers-bar">
-          <h2 className="title">Talaba ( Ta’lim shakli bo‘yicha)</h2>
-          <Column {...kamalakTypeColumn} />
         </section>
       </div>
       <div className="row">
@@ -732,6 +801,16 @@ const Students: React.FC = () => {
           </div>
 
           <Bar {...configBar} />
+        </section>
+      </div>
+      <div className="row">
+        <section className="home__teachers-bar">
+          <h2 className="title">Talaba ( Kurslar bo‘yicha)</h2>
+          <Column {...kamalakColumn} />
+        </section>
+        <section className="home__teachers-bar">
+          <h2 className="title">Talaba ( Ta’lim shakli bo‘yicha)</h2>
+          <Column {...kamalakTypeColumn} />
         </section>
       </div>
     </div>

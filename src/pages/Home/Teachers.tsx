@@ -66,7 +66,7 @@ const Teachers: React.FC = () => {
         content: "567 ta",
       },
     },
-    color: ["#1677FF", "#52C41A", "#13C2C2", "#FA8C16", "#722ED1", "#F5222D"],
+    color: ["#DA8FFF", "#30DB5B", "#FF6482", "#70D7FF", "#FFD426", "#7D7AFF"],
     legend: {
       itemName: {
         style: {
@@ -117,7 +117,7 @@ const Teachers: React.FC = () => {
         content: "567 ta",
       },
     },
-    color: ["#1677FF", "#52C41A", "#13C2C2", "#FA8C16", "#722ED1", "#F5222D"],
+    color: ["#FF6482", "#FFD426", "#DA8FFF"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -144,7 +144,7 @@ const Teachers: React.FC = () => {
     colorField: "type",
     angleField: "value",
 
-    color: ["#1677FF", "#52C41A"],
+    color: ["#30DB5B", "#FF6482", "#FFD426"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -193,7 +193,7 @@ const Teachers: React.FC = () => {
     yField: "soni",
     xField: "darajasi",
     seriesField: "name",
-    color: ["#1677FF", "#52C41A"],
+    color: ["#DA8FFF", "#70D7FF"],
     legend: {
       position: "bottom",
       itemHeight: 12,
@@ -208,6 +208,7 @@ const Teachers: React.FC = () => {
         borderRadius: 10,
       },
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
     },
   };
 
@@ -258,7 +259,7 @@ const Teachers: React.FC = () => {
     yField: "year",
     xField: "value",
     seriesField: "type",
-    color: ["#1677FF", "#52C41A"],
+    color: ["#DA8FFF", "#70D7FF"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -270,6 +271,7 @@ const Teachers: React.FC = () => {
     },
     barStyle: {
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
     },
   };
   const configAgeBar: BarConfig = {
@@ -339,7 +341,7 @@ const Teachers: React.FC = () => {
     yField: "year",
     xField: "value",
     seriesField: "type",
-    color: ["#1677FF", "#52C41A"],
+    color: ["#DA8FFF", "#70D7FF"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -351,6 +353,7 @@ const Teachers: React.FC = () => {
     },
     barStyle: {
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
     },
   };
 
@@ -375,7 +378,7 @@ const Teachers: React.FC = () => {
         return `${datum?.number} ta`;
       },
     },
-    color: ["#1677FF", "#52C41A", "#13C2C2", "#FA8C16", "#722ED1"],
+    color: ["#70D7FF", "#30DB5B", "#FF6482", "#FFD426", "#DA8FFF"],
   };
 
   return (

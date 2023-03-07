@@ -26,51 +26,51 @@
 
 // Colors
 .blue {
-  background-color: #1668dc;
-  border-left-color: #b7dcfa !important;
+  background-color: #70d7ff;
+  // border-left-color: #1668dc !important;
   h3,
   span {
-    color: #b7dcfa;
+    color: #ffffff;
   }
 }
 .pink {
-  background-color: #a02669;
-  border-left-color: #fac8c3 !important;
+  background-color: #da8fff;
+  // border-left-color: #fac8c3 !important;
   h3,
   span {
-    color: #fac8c3;
+    color: #ffffff;
   }
 }
 .green {
-  background-color: #49aa19;
-  border-left-color: #d5f2bb !important;
+  background-color: #30db5b;
+  // border-left-color: #d5f2bb !important;
   h3,
   span {
-    color: #d5f2bb;
+    color: #ffffff;
   }
 }
 .purple {
-  background-color: #642ab5;
-  border-left-color: #ebd7fa !important;
+  background-color: #ff6961;
+  // border-left-color: #ebd7fa !important;
   h3,
   span {
-    color: #ebd7fa;
+    color: #ffffff;
   }
 }
 .mango {
-  background-color: #13a8a8;
-  border-left-color: #b2f1e8 !important;
+  background-color: #7d7aff;
+  // border-left-color: #b2f1e8 !important;
   h3,
   span {
-    color: #b2f1e8;
+    color: #ffffff;
   }
 }
 .yellow {
-  background-color: #d87a16;
-  border-left-color: #fae3b7 !important;
+  background-color: #ffb340;
+  // border-left-color: #fae3b7 !important;
   h3,
   span {
-    color: #fae3b7;
+    color: #ffffff;
   }
 }
 
@@ -155,7 +155,7 @@
         flex-grow: 1;
         padding: 16px;
         background: #0f1a30;
-        border-bottom: 2px solid #2f54eb;
+        border-bottom: 2px solid #409cff;
         box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.03),
           0px 1px 6px -1px rgba(0, 0, 0, 0.02), 0px 2px 4px rgba(0, 0, 0, 0.02);
         border-radius: 4px;
@@ -173,7 +173,7 @@
             font-weight: 600;
             font-size: 30px;
             line-height: 38px;
-            color: #2f54eb;
+            color: #409cff;
           }
           div {
             h3 {
@@ -188,20 +188,20 @@
             }
             &:first-child {
               h3 {
-                color: #2f54eb;
+                color: #409cff;
               }
 
               h4 {
-                color: #2f54eb;
+                color: #409cff;
               }
             }
             &:last-child {
               h3 {
-                color: #52c41a;
+                color: #ffffff;
               }
 
               h4 {
-                color: #52c41a;
+                color: #ffffff;
               }
             }
           }

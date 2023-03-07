@@ -26,7 +26,7 @@ const Struktura: React.FC = () => {
     colorField: "type",
     angleField: "value",
 
-    color: ["#1677FF", "#52C41A"],
+    color: ["#7D7AFF", "#30DB5B"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -64,7 +64,7 @@ const Struktura: React.FC = () => {
     yField: "name",
     xField: "value",
     seriesField: "name",
-    color: ["#1677FF", "#52C41A"],
+    color: ["#7D7AFF", "#30DB5B"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -76,6 +76,7 @@ const Struktura: React.FC = () => {
     },
     barStyle: {
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
     },
   };
 
@@ -109,7 +110,7 @@ const Struktura: React.FC = () => {
     yField: "soni",
     xField: "name",
     seriesField: "name",
-    color: ["#1677FF", "#52C41A"],
+    color: ["#7D7AFF", "#30DB5B"],
     legend: {
       position: "bottom",
       itemHeight: 12,
@@ -121,6 +122,7 @@ const Struktura: React.FC = () => {
     },
     columnStyle: {
       radius: [6, 6, 6, 6],
+      fillOpacity: 1,
     },
   };
   const apexConfig = {
