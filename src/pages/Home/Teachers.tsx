@@ -66,7 +66,7 @@ const Teachers: React.FC = () => {
         content: "567 ta",
       },
     },
-    color: ["#1677FF", "#52C41A", "#EB2F96", "#FA8C16", "#722ED1", "#F5222D"],
+    color: ["#1677FF", "#52C41A", "#13C2C2", "#FA8C16", "#722ED1", "#F5222D"],
   };
   const configRahbarPie: PieConfig = {
     radius: 0.9,
@@ -110,7 +110,7 @@ const Teachers: React.FC = () => {
         content: "567 ta",
       },
     },
-    color: ["#1677FF", "#52C41A", "#EB2F96", "#FA8C16", "#722ED1", "#F5222D"],
+    color: ["#1677FF", "#52C41A", "#13C2C2", "#FA8C16", "#722ED1", "#F5222D"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -176,7 +176,7 @@ const Teachers: React.FC = () => {
     yField: "soni",
     xField: "darajasi",
     seriesField: "name",
-    color: ["#1677FF", "#EB2F96"],
+    color: ["#1677FF", "#52C41A"],
     legend: {
       position: "bottom",
       itemHeight: 12,
@@ -236,7 +236,7 @@ const Teachers: React.FC = () => {
     yField: "year",
     xField: "value",
     seriesField: "type",
-    color: ["#1677FF", "#EB2F96"],
+    color: ["#1677FF", "#52C41A"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -312,7 +312,7 @@ const Teachers: React.FC = () => {
     yField: "year",
     xField: "value",
     seriesField: "type",
-    color: ["#1677FF", "#EB2F96"],
+    color: ["#1677FF", "#52C41A"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -343,7 +343,7 @@ const Teachers: React.FC = () => {
         return `${datum?.number} ta`;
       },
     },
-    color: ["#1677FF", "#52C41A", "#EB2F96", "#FA8C16", "#722ED1"],
+    color: ["#1677FF", "#52C41A", "#13C2C2", "#FA8C16", "#722ED1"],
   };
 
   return (

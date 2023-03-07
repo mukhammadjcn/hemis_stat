@@ -83,7 +83,7 @@ const Students: React.FC = () => {
     yField: "year",
     xField: "value",
     seriesField: "type",
-    color: ["#1677FF", "#EB2F96"],
+    color: ["#1677FF", "#52C41A"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -267,7 +267,7 @@ const Students: React.FC = () => {
     yField: "soni",
     xField: "darajasi",
     seriesField: "name",
-    color: ["#13C2C2", "#EB2F96", "#FADB14", "#722ED1", "#F5222D"],
+    color: ["#13C2C2", "#52C41A", "#FADB14", "#722ED1", "#F5222D"],
     legend: {
       position: "bottom",
       itemHeight: 12,
@@ -345,7 +345,7 @@ const Students: React.FC = () => {
     yField: "soni",
     xField: "name",
     seriesField: "darajasi",
-    color: ["#1677FF", "#EB2F96", "#FADB14", "#722ED1", "#F5222D"],
+    color: ["#1677FF", "#52C41A", "#FADB14", "#722ED1", "#F5222D"],
     legend: {
       position: "bottom",
       itemHeight: 12,
