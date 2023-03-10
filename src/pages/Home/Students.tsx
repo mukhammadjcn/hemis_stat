@@ -183,6 +183,25 @@ const Students: React.FC = () => {
       radius: [6, 6, 6, 6],
       fillOpacity: 1,
     },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
   };
 
   const kamalakColumn: ColumnConfig = {
@@ -326,6 +345,25 @@ const Students: React.FC = () => {
       radius: [6, 6, 6, 6],
       fillOpacity: 1,
     },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
   };
 
   const kamalakTypeColumn: ColumnConfig = {
@@ -409,6 +447,25 @@ const Students: React.FC = () => {
     columnStyle: {
       radius: [6, 6, 6, 6],
       fillOpacity: 1,
+    },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
     },
   };
 
@@ -569,10 +626,30 @@ const Students: React.FC = () => {
           fill: "white",
         },
       },
+      offsetY: 10,
     },
     columnStyle: {
       radius: [6, 6, 6, 6],
       fillOpacity: 1,
+    },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
     },
   };
 
@@ -647,6 +724,25 @@ const Students: React.FC = () => {
       radius: [6, 6, 6, 6],
       fillOpacity: 1,
     },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
   };
 
   const option = {
@@ -667,7 +763,7 @@ const Students: React.FC = () => {
         radius: ["80%", "65%"],
         avoidLabelOverlap: false,
         itemStyle: {
-          borderRadius: 8,
+          borderRadius: 4,
         },
         label: {
           show: false,
@@ -689,10 +785,96 @@ const Students: React.FC = () => {
     ],
   };
 
+  const optionBar = {
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        // Use axis to trigger tooltip
+        type: "shadow", // 'shadow' as default; can also be 'line' or 'shadow'
+      },
+    },
+    legend: {},
+    grid: {
+      left: "3%",
+      right: "4%",
+      bottom: "3%",
+      containLabel: true,
+    },
+    xAxis: {
+      type: "value",
+    },
+    yAxis: {
+      type: "category",
+      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    },
+    series: [
+      {
+        name: "Direct",
+        type: "bar",
+        stack: "total",
+        label: {
+          show: true,
+        },
+        emphasis: {
+          focus: "series",
+        },
+        data: [320, 302, 301, 334, 390, 330, 320],
+      },
+      {
+        name: "Mail Ad",
+        type: "bar",
+        stack: "total",
+        label: {
+          show: true,
+        },
+        emphasis: {
+          focus: "series",
+        },
+        data: [120, 132, 101, 134, 90, 230, 210],
+      },
+      {
+        name: "Affiliate Ad",
+        type: "bar",
+        stack: "total",
+        label: {
+          show: true,
+        },
+        emphasis: {
+          focus: "series",
+        },
+        data: [220, 182, 191, 234, 290, 330, 310],
+      },
+      {
+        name: "Video Ad",
+        type: "bar",
+        stack: "total",
+        label: {
+          show: true,
+        },
+        emphasis: {
+          focus: "series",
+        },
+        data: [150, 212, 201, 154, 190, 330, 410],
+      },
+      {
+        name: "Search Engine",
+        type: "bar",
+        stack: "total",
+        label: {
+          show: true,
+        },
+        emphasis: {
+          focus: "series",
+        },
+        data: [820, 832, 901, 934, 1290, 1330, 1320],
+      },
+    ],
+  };
+
   return (
     <div className="home__teachers">
       <div className="students__top">
-        <div className="student">
+        <div data-aos="fade-up" className="student">
           <h2>Bakalavr</h2>
           <div className="flex">
             <div>
@@ -705,7 +887,7 @@ const Students: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="student">
+        <div data-aos="fade-up" data-aos-delay="200" className="student">
           <h2>Magistr</h2>
           <div className="flex">
             <div>
@@ -718,46 +900,7 @@ const Students: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="student">
-          <h2>Ordinatura</h2>
-          <div className="flex">
-            <div>
-              <h3>3000 ta</h3>
-              <h4>Erkak</h4>
-            </div>
-            <div>
-              <h3>1000 ta</h3>
-              <h4>Ayol</h4>
-            </div>
-          </div>
-        </div>
-        <div className="student">
-          <h2>Doktorantura (PhD)</h2>
-          <div className="flex">
-            <div>
-              <h3>3000 ta</h3>
-              <h4>Erkak</h4>
-            </div>
-            <div>
-              <h3>1000 ta</h3>
-              <h4>Ayol</h4>
-            </div>
-          </div>
-        </div>
-        <div className="student">
-          <h2>Doktorantura (DSc)</h2>
-          <div className="flex">
-            <div>
-              <h3>3000 ta</h3>
-              <h4>Erkak</h4>
-            </div>
-            <div>
-              <h3>1000 ta</h3>
-              <h4>Ayol</h4>
-            </div>
-          </div>
-        </div>
-        <div className="student">
+        <div data-aos="fade-up" data-aos-delay="400" className="student">
           <h2>Jami</h2>
           <div className="flex">
             <h1>3000 ta</h1>
@@ -765,11 +908,19 @@ const Students: React.FC = () => {
         </div>
       </div>
       <div className="row">
-        <section className="home__teachers-bar">
+        <section
+          data-aos="fade-up-right"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <h2 className="title">Talaba ( Yosh bo‘yicha)</h2>
           <Bar {...configAgeBar} />
         </section>
-        <section className="home__teachers-bar">
+        <section
+          data-aos="fade-up-left"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">Talabalar (To‘lov shakli bo‘yicha)</h2>
             <Segmented
@@ -782,17 +933,29 @@ const Students: React.FC = () => {
         </section>
       </div>
       <div className="row">
-        <section className="home__teachers-bar">
+        <section
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <h2 className="title">Talaba ( Hududlar bo‘yicha)</h2>
           <Column {...configColumnHududlar} />
         </section>
       </div>
       <div className="row">
-        <section className="home__teachers-bar">
+        <section
+          data-aos="zoom-in-right"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <h2 className="title">Talaba ( Fuqarolik bo‘yicha)</h2>
           <Column {...configNationColumn} />
         </section>
-        <section className="home__teachers-bar">
+        <section
+          data-aos="zoom-in-left"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">Talabalar turar joy bo‘yicha</h2>
             <h3>
@@ -804,11 +967,19 @@ const Students: React.FC = () => {
         </section>
       </div>
       <div className="row">
-        <section className="home__teachers-bar">
+        <section
+          data-aos="zoom-in-right"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <h2 className="title">Talaba ( Kurslar bo‘yicha)</h2>
           <Column {...kamalakColumn} />
         </section>
-        <section className="home__teachers-bar">
+        <section
+          data-aos="zoom-in-left"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <h2 className="title">Talaba ( Ta’lim shakli bo‘yicha)</h2>
           <Column {...kamalakTypeColumn} />
         </section>

@@ -1,11 +1,18 @@
 import { Tabs } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "src/components/home/Header";
 import Struktura from "./Struktura";
 import Students from "./Students";
 import Teachers from "./Teachers";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Home: React.FC = () => {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+    });
+  }, []);
   return (
     <>
       <Header />

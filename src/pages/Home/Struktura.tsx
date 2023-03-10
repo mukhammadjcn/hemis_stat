@@ -169,11 +169,19 @@ const Struktura: React.FC = () => {
   return (
     <div className="home__teachers">
       <div className="row">
-        <section className="home__teachers-bar">
+        <section
+          data-aos="zoom-in"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <h2 className="title">Guruhlar</h2>
           <Column {...configColumn} />
         </section>
-        <section className="home__teachers-bar">
+        <section
+          data-aos="zoom-in"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">Auditoriyalar soni</h2>
             <h3>
@@ -190,7 +198,11 @@ const Struktura: React.FC = () => {
         </section>
       </div>
       <div className="row">
-        <section className="home__teachers-bar">
+        <section
+          data-aos="zoom-in"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">Yo‘nalishlar</h2>
             <h3>
@@ -200,7 +212,11 @@ const Struktura: React.FC = () => {
 
           <Pie {...configPie} />
         </section>
-        <section className="home__teachers-bar">
+        <section
+          data-aos="zoom-in"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">Bo‘limlar</h2>
             <h3>

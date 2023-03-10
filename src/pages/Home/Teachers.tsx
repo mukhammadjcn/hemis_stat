@@ -390,37 +390,61 @@ const Teachers: React.FC = () => {
         </div>
         <div>
           <h2 className="title">O‘qituvchilar (Jins bo‘yicha)</h2>
-          <div className="statbox blue">
+          <div data-aos="fade-left" className="statbox blue">
             <h3>Erkaklar</h3>
             <span>20 556 ta</span>
           </div>
-          <div className="statbox pink">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="100"
+            className="statbox pink"
+          >
             <h3>Ayollar</h3>
             <span>20 556 ta</span>
           </div>
-          <div className="statbox green">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="200"
+            className="statbox green"
+          >
             <h3>Jami o‘qituvchilar soni</h3>
             <span>20 556 ta</span>
           </div>
         </div>
         <div>
           <h2 className="title">O‘qituvchilar (Fuqarolik bo‘yicha)</h2>
-          <div className="statbox purple">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="300"
+            className="statbox purple"
+          >
             <h3>O‘zbekiston fuqarosi</h3>
             <span>20 556 ta</span>
           </div>
-          <div className="statbox mango">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="400"
+            className="statbox mango"
+          >
             <h3>Xorijiy davlat </h3>
             <span>20 556 ta</span>
           </div>
-          <div className="statbox yellow">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="500"
+            className="statbox yellow"
+          >
             <h3>Fuqaroligi yo‘q shaxslar</h3>
             <span>20 556 ta</span>
           </div>
         </div>
       </section>
       <div className="row">
-        <section className="home__teachers-bar">
+        <section
+          data-aos="fade-right"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha</h2>
             <h3 className="info">
@@ -430,7 +454,11 @@ const Teachers: React.FC = () => {
           </div>
           <Column {...configColumn} />
         </section>
-        <section className="home__teachers-bar">
+        <section
+          data-aos="fade-left"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">
               O‘qituvchilar ilmiy(unvon) daraja bo‘yicha
@@ -444,13 +472,21 @@ const Teachers: React.FC = () => {
       </div>
 
       <div className="row">
-        <section className="home__teachers-bar">
+        <section
+          data-aos="fade-right"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">Raxbar xodimlar</h2>
           </div>
           <Pie {...configRahbarPie} />
         </section>
-        <section className="home__teachers-bar">
+        <section
+          data-aos="fade-left"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">Ilmiy salohiyat</h2>
             <h3>
@@ -462,7 +498,11 @@ const Teachers: React.FC = () => {
       </div>
 
       <div className="row">
-        <section className="home__teachers-bar">
+        <section
+          data-aos="fade-right"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">O‘qituvchilar yoshi bo‘yicha</h2>
             <h3>
@@ -471,7 +511,11 @@ const Teachers: React.FC = () => {
           </div>
           <Bar {...configAgeBar} />
         </section>
-        <section className="home__teachers-bar">
+        <section
+          data-aos="fade-left"
+          data-aos-duration="1500"
+          className="home__teachers-bar"
+        >
           <div className="flex">
             <h2 className="title">O‘qituvchilar mehnat shakli bo‘yicha</h2>
             <h3>
