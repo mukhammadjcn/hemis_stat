@@ -76,6 +76,7 @@
 
 .home {
   min-height: 100vh;
+  overflow-x: hidden;
   background: #15213a;
 
   section {
@@ -250,6 +251,13 @@
       }
     }
   }
+}
+.ant-segmented-item-selected {
+  background-color: #15213a !important;
+  color: #ffffff;
+}
+.ant-segmented-item {
+  color: white !important;
 }
 
 @keyframes gradient {

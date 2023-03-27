@@ -1,25 +1,12 @@
 import { CreateFunc, GetFunc } from "./Requests";
 
 // Get cadidates
-export const GetCondidatesConfig = (params = "") => {
-  return GetFunc(`/candidates/?size=10${params}`);
+export const GetStudentsConfig = (univer = "hemis") => {
+  return GetFunc(`student.${univer}.uz/rest/v1/public/stat-student`);
 };
-export const GetPositionsConfig = () => {
-  return GetFunc(`/classifiers/positions/`);
+export const GetTeachersConfig = (univer = "hemis") => {
+  return GetFunc(`student.${univer}.uz/rest/v1/public/stat-employee`);
 };
-export const GetStatsConfig = () => {
-  return GetFunc(`/main-page-information/`);
-};
-
-// Vote API
-export const VoteConfig = (data) => {
-  return CreateFunc(`/votes/new/`, data);
-};
-export const VerifyConfig = (id, data) => {
-  return CreateFunc(`/votes/${id}/approve/`, data);
-};
-
-// Get cadidates yutgan
-export const GetYutganConfig = () => {
-  return GetFunc(`/candidates/?size=17`);
+export const GetStatsConfig = (univer = "hemis") => {
+  return GetFunc(`student.${univer}.uz/rest/v1/public/stat-structure`);
 };

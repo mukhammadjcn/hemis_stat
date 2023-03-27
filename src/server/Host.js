@@ -15,7 +15,7 @@ export const removeLocal = (name) => localStorage.removeItem(name);
 export const setLocal = (name, value) => localStorage.setItem(name, value);
 
 // Host JS
-export let host = "https://kengash.edu.uz/api";
+export let host = "https://";
 
 export let headers = {
   "X-Requested-With": "XMLHttpRequest",

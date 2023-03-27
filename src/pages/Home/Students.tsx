@@ -7,10 +7,16 @@ import {
   ColumnConfig,
 } from "@ant-design/plots";
 import { Segmented } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactEcharts from "echarts-for-react";
+import { GetStudentsConfig } from "src/server/config/Urls";
+import { useLocation } from "react-router-dom";
 
 const Students: React.FC = () => {
+  const location = useLocation();
+  const [students, setStudents] = useState<any>({});
+  const [isgrant, setIsGrant] = useState<boolean>(true);
+
   const configPie: PieConfig = {
     radius: 0.9,
     height: 360,
@@ -61,22 +67,22 @@ const Students: React.FC = () => {
     data: [
       {
         year: "30 yoshgacha",
-        value: 1000,
+        value: students?.age?.["30 yoshgacha"]?.Erkak,
         type: "Erkak",
       },
       {
         year: "30 yoshdan katta",
-        value: 2000,
+        value: students?.age?.["30 yoshdan katta"]?.Erkak,
         type: "Erkak",
       },
       {
         year: "30 yoshgacha",
-        value: 3000,
+        value: students?.age?.["30 yoshgacha"]?.Ayol,
         type: "Ayol",
       },
       {
         year: "30 yoshdan katta",
-        value: 650,
+        value: students?.age?.["30 yoshdan katta"]?.Ayol,
         type: "Ayol",
       },
     ],
@@ -137,32 +143,34 @@ const Students: React.FC = () => {
       {
         name: "Bakalavr",
         darajasi: "O‘zbekiston fuqarosi",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.citizenship?.["O‘zbekiston Respublikasi fuqarosi"]
+          ?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Xorijiy davlat fuqarosi",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.citizenship?.["Xorijiy davlat fuqarosi"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Fuqaroligi yo‘q shaxs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.citizenship?.["Fuqaroligi yo‘q shaxslar"]?.Bakalavr,
       },
       {
         name: "Magistr",
         darajasi: "O‘zbekiston fuqarosi",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.citizenship?.["O‘zbekiston Respublikasi fuqarosi"]
+          ?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Xorijiy davlat fuqarosi",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.citizenship?.["Xorijiy davlat fuqarosi"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Fuqaroligi yo‘q shaxs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.citizenship?.["Fuqaroligi yo‘q shaxslar"]?.Magistr,
       },
     ],
     isGroup: true,
@@ -209,122 +217,182 @@ const Students: React.FC = () => {
       {
         name: "Kunduzgi",
         darajasi: "1-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["1-kurs"].Kunduzgi,
       },
       {
         name: "Kunduzgi",
         darajasi: "2-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["2-kurs"].Kunduzgi,
       },
       {
         name: "Kunduzgi",
         darajasi: "3-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["3-kurs"].Kunduzgi,
       },
       {
         name: "Kunduzgi",
         darajasi: "4-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["4-kurs"].Kunduzgi,
       },
       {
         name: "Kunduzgi",
         darajasi: "5-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["5-kurs"].Kunduzgi,
       },
       {
         name: "Kunduzgi",
         darajasi: "6-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["6-kurs"].Kunduzgi,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "1-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["1-kurs"]?.["Maxsus sirtqi"],
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "2-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["2-kurs"]?.["Maxsus sirtqi"],
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "3-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["3-kurs"]?.["Maxsus sirtqi"],
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "4-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["4-kurs"]?.["Maxsus sirtqi"],
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "5-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["5-kurs"]?.["Maxsus sirtqi"],
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "6-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["6-kurs"]?.["Maxsus sirtqi"],
       },
       {
         name: "Kechki",
         darajasi: "1-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["1-kurs"]?.Kechki,
       },
       {
         name: "Kechki",
         darajasi: "2-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["2-kurs"]?.Kechki,
       },
       {
         name: "Kechki",
         darajasi: "3-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["3-kurs"]?.Kechki,
       },
       {
         name: "Kechki",
         darajasi: "4-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["4-kurs"]?.Kechki,
       },
       {
         name: "Kechki",
         darajasi: "5-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["5-kurs"]?.Kechki,
       },
       {
         name: "Kechki",
         darajasi: "6-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["6-kurs"]?.Kechki,
       },
       {
         name: "Sirtqi",
         darajasi: "1-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["1-kurs"]?.Sirtqi,
       },
       {
         name: "Sirtqi",
         darajasi: "2-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["2-kurs"]?.Sirtqi,
       },
       {
         name: "Sirtqi",
         darajasi: "3-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["3-kurs"]?.Sirtqi,
       },
       {
         name: "Sirtqi",
         darajasi: "4-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["4-kurs"]?.Sirtqi,
       },
       {
         name: "Sirtqi",
         darajasi: "5-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["5-kurs"]?.Sirtqi,
       },
       {
         name: "Sirtqi",
         darajasi: "6-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.level?.["6-kurs"]?.Sirtqi,
+      },
+      {
+        name: "Qo‘shma",
+        darajasi: "1-kurs",
+        soni: students?.level?.["1-kurs"]?.["Qo‘shma"],
+      },
+      {
+        name: "Qo‘shma",
+        darajasi: "2-kurs",
+        soni: students?.level?.["2-kurs"]?.["Qo‘shma"],
+      },
+      {
+        name: "Qo‘shma",
+        darajasi: "3-kurs",
+        soni: students?.level?.["3-kurs"]?.["Qo‘shma"],
+      },
+      {
+        name: "Qo‘shma",
+        darajasi: "4-kurs",
+        soni: students?.level?.["4-kurs"]?.["Qo‘shma"],
+      },
+      {
+        name: "Qo‘shma",
+        darajasi: "5-kurs",
+        soni: students?.level?.["5-kurs"]?.["Qo‘shma"],
+      },
+      {
+        name: "Qo‘shma",
+        darajasi: "6-kurs",
+        soni: students?.level?.["6-kurs"]?.["Qo‘shma"],
+      },
+      {
+        name: "Masofaviy",
+        darajasi: "1-kurs",
+        soni: students?.level?.["1-kurs"]?.Masofaviy,
+      },
+      {
+        name: "Masofaviy",
+        darajasi: "2-kurs",
+        soni: students?.level?.["2-kurs"]?.Masofaviy,
+      },
+      {
+        name: "Masofaviy",
+        darajasi: "3-kurs",
+        soni: students?.level?.["3-kurs"]?.Masofaviy,
+      },
+      {
+        name: "Masofaviy",
+        darajasi: "4-kurs",
+        soni: students?.level?.["4-kurs"]?.Masofaviy,
+      },
+      {
+        name: "Masofaviy",
+        darajasi: "5-kurs",
+        soni: students?.level?.["5-kurs"]?.Masofaviy,
+      },
+      {
+        name: "Masofaviy",
+        darajasi: "6-kurs",
+        soni: students?.level?.["6-kurs"]?.Masofaviy,
       },
     ],
     isStack: true,
@@ -371,63 +439,62 @@ const Students: React.FC = () => {
       {
         name: "Kunduzgi",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Kunduzgi"]?.Erkak,
       },
       {
         name: "Kunduzgi",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Kunduzgi"]?.Ayol,
       },
       {
         name: "Kechki",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Kechki"]?.Erkak,
       },
       {
         name: "Kechki",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Kechki"]?.Ayol,
       },
-
       {
         name: "Sirtqi",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Sirtqi"]?.Erkak,
       },
       {
         name: "Sirtqi",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Sirtqi"]?.Ayol,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Maxsus sirtqi"]?.Erkak,
       },
       {
         name: "Maxsus sirtqi",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Maxsus sirtqi"]?.Ayol,
       },
       {
         name: "Qo'shma",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Qo'shma"]?.Erkak,
       },
       {
         name: "Qo'shma",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Qo'shma"]?.Ayol,
       },
       {
         name: "Masofaviy",
         darajasi: "Erkak",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Masofaviy"]?.Erkak,
       },
       {
         name: "Masofaviy",
         darajasi: "Ayol",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.education_form?.["Masofaviy"]?.Ayol,
       },
     ],
     isStack: true,
@@ -474,143 +541,143 @@ const Students: React.FC = () => {
       {
         name: "Bakalavr",
         darajasi: "Qoraqalpog‘iston",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Qoraqalpog‘iston Resp."]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Xorazm",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Xorazm viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Buxoro",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Buxoro viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Navoiy",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Navoiy viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Qashqadaryo",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Qashqadaryo viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Surxondaryo",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Surxondaryo viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Samarqand",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Samarqand viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Jizzax",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Jizzah viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Sirdaryo",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Sirdaryo viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Farg‘ona",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Farg'ona viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Namangan",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Namangan viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Andijon",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Andijon viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Toshkent",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Toshkent viloyati"]?.Bakalavr,
       },
       {
         name: "Bakalavr",
         darajasi: "Toshkent shahri",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Toshkent shahri"]?.Bakalavr,
       },
 
       {
         name: "Magistr",
         darajasi: "Qoraqalpog‘iston",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Qoraqalpog‘iston Resp."]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Xorazm",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Xorazm viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Buxoro",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Buxoro viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Navoiy",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Navoiy viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Qashqadaryo",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Qashqadaryo viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Surxondaryo",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Surxondaryo viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Samarqand",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Samarqand viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Jizzax",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Jizzah viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Sirdaryo",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Sirdaryo viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Farg‘ona",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Farg'ona viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Namangan",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Namangan viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Andijon",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Andijon viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Toshkent",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Toshkent viloyati"]?.Magistr,
       },
       {
         name: "Magistr",
         darajasi: "Toshkent shahri",
-        soni: Math.floor(Math.random() * 20) + 20,
+        soni: students?.region?.["Toshkent shahri"]?.Magistr,
       },
     ],
     isStack: true,
@@ -657,52 +724,52 @@ const Students: React.FC = () => {
     data: [
       {
         year: "O‘z uyida",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: students?.accommodation?.["O‘z uyida"]?.Bakalavr,
         type: "Bakalavr",
       },
       {
         year: "Qarindoshing uyida",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: students?.accommodation?.["Qarindoshining uyida"]?.Bakalavr,
         type: "Bakalavr",
       },
       {
         year: "Tanishing uyida",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: students?.accommodation?.["Tanishining uyida"]?.Bakalavr,
         type: "Bakalavr",
       },
       {
         year: "Ijaradagi uyda",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: students?.accommodation?.["Ijaradagi uyda"]?.Bakalavr,
         type: "Bakalavr",
       },
       {
         year: "Talabalar turar joyida",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: students?.accommodation?.["Talabalar turar joyida"]?.Bakalavr,
         type: "Bakalavr",
       },
       {
         year: "O‘z uyida",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: students?.accommodation?.["O‘z uyida"]?.Magistr,
         type: "Magistr",
       },
       {
         year: "Qarindoshing uyida",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: students?.accommodation?.["Qarindoshining uyida"]?.Magistr,
         type: "Magistr",
       },
       {
         year: "Tanishing uyida",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: students?.accommodation?.["Tanishining uyida"]?.Magistr,
         type: "Magistr",
       },
       {
         year: "Ijaradagi uyda",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: students?.accommodation?.["Ijaradagi uyda"]?.Magistr,
         type: "Magistr",
       },
       {
         year: "Talabalar turar joyida",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: students?.accommodation?.["Talabalar turar joyida"]?.Magistr,
         type: "Magistr",
       },
     ],
@@ -777,8 +844,18 @@ const Students: React.FC = () => {
           },
         },
         data: [
-          { value: 1048, name: "Bakalavr" },
-          { value: 735, name: "Magistr" },
+          {
+            value: isgrant
+              ? students?.payment?.["Davlat granti"]?.Bakalavr
+              : students?.payment?.["To‘lov-shartnoma"]?.Bakalavr,
+            name: "Bakalavr",
+          },
+          {
+            value: isgrant
+              ? students?.payment?.["Davlat granti"]?.Magistr
+              : students?.payment?.["To‘lov-shartnoma"]?.Magistr,
+            name: "Magistr",
+          },
         ],
         color: ["#7D7AFF", "#30DB5B"],
       },
@@ -871,6 +948,16 @@ const Students: React.FC = () => {
     ],
   };
 
+  const GetStudents = async () => {
+    let univer = location.pathname?.split("https://student.")[1]?.split(".")[0];
+    const { data } = await GetStudentsConfig(univer);
+    setStudents(data?.data);
+  };
+
+  useEffect(() => {
+    GetStudents();
+  }, []);
+
   return (
     <div className="home__teachers">
       <div className="students__top">
@@ -878,11 +965,11 @@ const Students: React.FC = () => {
           <h2>Bakalavr</h2>
           <div className="flex">
             <div>
-              <h3>3000 ta</h3>
+              <h3>{students?.education_type?.Bakalavr?.Erkak} ta</h3>
               <h4>Erkak</h4>
             </div>
             <div>
-              <h3>1000 ta</h3>
+              <h3>{students?.education_type?.Bakalavr?.Ayol} ta</h3>
               <h4>Ayol</h4>
             </div>
           </div>
@@ -891,11 +978,11 @@ const Students: React.FC = () => {
           <h2>Magistr</h2>
           <div className="flex">
             <div>
-              <h3>3000 ta</h3>
+              <h3>{students?.education_type?.Magistr?.Erkak} ta</h3>
               <h4>Erkak</h4>
             </div>
             <div>
-              <h3>1000 ta</h3>
+              <h3>{students?.education_type?.Magistr?.Ayol} ta</h3>
               <h4>Ayol</h4>
             </div>
           </div>
@@ -903,7 +990,11 @@ const Students: React.FC = () => {
         <div data-aos="fade-up" data-aos-delay="400" className="student">
           <h2>Jami</h2>
           <div className="flex">
-            <h1>3000 ta</h1>
+            <h1>
+              {students?.education_type?.Jami?.Ayol +
+                students?.education_type?.Jami?.Erkak}{" "}
+              ta
+            </h1>
           </div>
         </div>
       </div>
@@ -924,9 +1015,12 @@ const Students: React.FC = () => {
           <div className="flex">
             <h2 className="title">Talabalar (To‘lov shakli bo‘yicha)</h2>
             <Segmented
+              defaultValue="Davlat granti"
+              onChange={(val) =>
+                val == "Davlat granti" ? setIsGrant(true) : setIsGrant(false)
+              }
               style={{ background: "#4B5364" }}
               options={["Davlat granti", "To‘lov shartnoma"]}
-              defaultValue="Davlat granti"
             />
           </div>
           <ReactEcharts option={option} style={{ height: 400 }} />

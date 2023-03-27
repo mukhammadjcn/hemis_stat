@@ -9,36 +9,41 @@ import {
   FunnelConfig,
 } from "@ant-design/plots";
 import { Switch } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { GetTeachersConfig } from "src/server/config/Urls";
 
 const Teachers: React.FC = () => {
+  const location = useLocation();
+  const [teachers, setTeachers] = useState<any>({});
+
   const configPie: PieConfig = {
     radius: 0.9,
     height: 360,
     data: [
       {
         type: "Stajer o‘qituvchi",
-        value: 27,
+        value: teachers?.position?.["Stajer-o‘qituvchi"],
       },
       {
         type: "Asisstent",
-        value: 25,
+        value: teachers?.position?.["Assistent"],
       },
       {
         type: "Katta o'qituvchi",
-        value: 18,
+        value: teachers?.position?.["Katta o‘qituvchi"],
       },
       {
         type: "Dotsent",
-        value: 15,
+        value: teachers?.position?.["Dotsent"],
       },
       {
         type: "Professor",
-        value: 10,
+        value: teachers?.position?.["Professor"],
       },
       {
         type: "Kafedra mudiri",
-        value: 5,
+        value: teachers?.position?.["Kafedra mudiri"],
       },
     ],
     innerRadius: 0.8,
@@ -63,7 +68,7 @@ const Teachers: React.FC = () => {
           textOverflow: "ellipsis",
           color: "white",
         },
-        content: "567 ta",
+        content: `35 ta`,
       },
     },
     color: ["#DA8FFF", "#30DB5B", "#FF6482", "#70D7FF", "#FFD426", "#7D7AFF"],
@@ -81,15 +86,15 @@ const Teachers: React.FC = () => {
     data: [
       {
         type: "Prorektorlar",
-        value: 27,
+        value: teachers?.direction?.Prorektor,
       },
       {
         type: "Dekanlar",
-        value: 25,
+        value: teachers?.direction?.Dekan,
       },
       {
         type: "Kafedra mudiri",
-        value: 18,
+        value: teachers?.direction?.["Kafedra mudiri"],
       },
     ],
     innerRadius: 0.6,
@@ -133,11 +138,11 @@ const Teachers: React.FC = () => {
     data: [
       {
         type: "O'qituvchilar (Ilmiy darajali)",
-        value: Math.floor(Math.random() * 1000),
+        value: teachers?.academic?.Darajali,
       },
       {
         type: "O'qituvchilar (Ilmiy darajasiz)",
-        value: Math.floor(Math.random() * 1000),
+        value: teachers?.academic?.Darajasiz,
       },
     ],
     appendPadding: 10,
@@ -161,32 +166,32 @@ const Teachers: React.FC = () => {
       {
         name: "Erkak",
         darajasi: "Darajasiz",
-        soni: 18,
+        soni: teachers?.academic_degree?.Darajasiz?.Erkak,
       },
       {
         name: "Erkak",
         darajasi: "Fan nomzodi, PHD",
-        soni: 28,
+        soni: teachers?.academic_degree?.["Fan nomzodi, PhD"]?.Erkak,
       },
       {
         name: "Erkak",
         darajasi: "Fan doktori, DCs",
-        soni: 24,
+        soni: teachers?.academic_degree?.["Fan doktori, DSc"]?.Erkak,
       },
       {
         name: "Ayol",
         darajasi: "Darajasiz",
-        soni: 12,
+        soni: teachers?.academic_degree?.Darajasiz?.Ayol,
       },
       {
         name: "Ayol",
         darajasi: "Fan nomzodi, PHD",
-        soni: 16,
+        soni: teachers?.academic_degree?.["Fan nomzodi, PhD"]?.Ayol,
       },
       {
         name: "Ayol",
         darajasi: "Fan doktori, DCs",
-        soni: 20,
+        soni: teachers?.academic_degree?.["Fan doktori, DSc"]?.Ayol,
       },
     ],
     isGroup: true,
@@ -216,42 +221,42 @@ const Teachers: React.FC = () => {
     data: [
       {
         year: "Unvonsiz",
-        value: 18,
+        value: teachers?.academic_rank?.Unvonsiz?.Erkak,
         type: "Erkak",
       },
       {
         year: "Dotsent",
-        value: 12,
+        value: teachers?.academic_rank?.Dotsent?.Erkak,
         type: "Erkak",
       },
       {
         year: "Katta ilmiy xodim",
-        value: 8,
+        value: teachers?.academic_rank?.["Katta ilmiy xodim"]?.Erkak,
         type: "Erkak",
       },
       {
         year: "Professor",
-        value: 16,
+        value: teachers?.academic_rank?.["Professor"]?.Erkak,
         type: "Erkak",
       },
       {
         year: "Unvonsiz",
-        value: 16,
+        value: teachers?.academic_rank?.Unvonsiz?.Ayol,
         type: "Ayol",
       },
       {
         year: "Dotsent",
-        value: 14,
+        value: teachers?.academic_rank?.Dotsent?.Ayol,
         type: "Ayol",
       },
       {
         year: "Katta ilmiy xodim",
-        value: 12,
+        value: teachers?.academic_rank?.["Katta ilmiy xodim"]?.Ayol,
         type: "Ayol",
       },
       {
         year: "Professor",
-        value: 20,
+        value: teachers?.academic_rank?.["Professor"]?.Ayol,
         type: "Ayol",
       },
     ],
@@ -381,6 +386,16 @@ const Teachers: React.FC = () => {
     color: ["#70D7FF", "#30DB5B", "#FF6482", "#FFD426", "#DA8FFF"],
   };
 
+  const GetTeachers = async () => {
+    let univer = location.pathname?.split("https://student.")[1]?.split(".")[0];
+    const { data } = await GetTeachersConfig(univer);
+    setTeachers(data?.data);
+  };
+
+  useEffect(() => {
+    GetTeachers();
+  }, []);
+
   return (
     <div className="home__teachers">
       <section className="home__teachers-pie">
@@ -392,7 +407,7 @@ const Teachers: React.FC = () => {
           <h2 className="title">O‘qituvchilar (Jins bo‘yicha)</h2>
           <div data-aos="fade-left" className="statbox blue">
             <h3>Erkaklar</h3>
-            <span>20 556 ta</span>
+            <span>{teachers?.gender?.Erkak} ta</span>
           </div>
           <div
             data-aos="fade-left"
@@ -400,7 +415,7 @@ const Teachers: React.FC = () => {
             className="statbox pink"
           >
             <h3>Ayollar</h3>
-            <span>20 556 ta</span>
+            <span>{teachers?.gender?.Ayol} ta</span>
           </div>
           <div
             data-aos="fade-left"
@@ -408,7 +423,7 @@ const Teachers: React.FC = () => {
             className="statbox green"
           >
             <h3>Jami o‘qituvchilar soni</h3>
-            <span>20 556 ta</span>
+            <span>{teachers?.gender?.Jami} ta</span>
           </div>
         </div>
         <div>
@@ -418,16 +433,18 @@ const Teachers: React.FC = () => {
             data-aos-delay="300"
             className="statbox purple"
           >
-            <h3>O‘zbekiston fuqarosi</h3>
-            <span>20 556 ta</span>
+            <h3>O‘zbekiston Respublikasi fuqarosi</h3>
+            <span>
+              {teachers?.citizenship?.["O‘zbekiston Respublikasi fuqarosi"]} ta
+            </span>
           </div>
           <div
             data-aos="fade-left"
             data-aos-delay="400"
             className="statbox mango"
           >
-            <h3>Xorijiy davlat </h3>
-            <span>20 556 ta</span>
+            <h3>Xorijiy davlat fuqarosi </h3>
+            <span>{teachers?.citizenship?.["Xorijiy davlat fuqarosi"]} ta</span>
           </div>
           <div
             data-aos="fade-left"
@@ -435,7 +452,9 @@ const Teachers: React.FC = () => {
             className="statbox yellow"
           >
             <h3>Fuqaroligi yo‘q shaxslar</h3>
-            <span>20 556 ta</span>
+            <span>
+              {teachers?.citizenship?.["Fuqaroligi yo‘q shaxslar"]} ta
+            </span>
           </div>
         </div>
       </section>
