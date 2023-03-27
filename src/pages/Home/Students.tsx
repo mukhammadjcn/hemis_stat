@@ -17,8 +17,6 @@ const Students: React.FC = () => {
   const [students, setStudents] = useState<any>({});
   const [isgrant, setIsGrant] = useState<boolean>(true);
 
-  console.log(window.location.href);
-
   const configPie: PieConfig = {
     radius: 0.9,
     height: 360,
@@ -951,7 +949,10 @@ const Students: React.FC = () => {
   };
 
   const GetStudents = async () => {
-    let univer = location.pathname?.split("https://student.")[1]?.split(".")[0];
+    let univer = location.pathname
+      ?.replace("https://hemis.vercel.app/?api=", "")
+      ?.split("https://student.")[1]
+      ?.split(".")[0];
     const { data } = await GetStudentsConfig(univer);
     setStudents(data?.data);
   };

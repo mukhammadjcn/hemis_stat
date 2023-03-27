@@ -387,7 +387,10 @@ const Teachers: React.FC = () => {
   };
 
   const GetTeachers = async () => {
-    let univer = location.pathname?.split("https://student.")[1]?.split(".")[0];
+    let univer = location.pathname
+      ?.replace("https://hemis.vercel.app/?api=", "")
+      ?.split("https://student.")[1]
+      ?.split(".")[0];
     const { data } = await GetTeachersConfig(univer);
     setTeachers(data?.data);
   };
