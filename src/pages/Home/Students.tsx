@@ -949,9 +949,8 @@ const Students: React.FC = () => {
   };
 
   const GetStudents = async () => {
-    console.log(location);
-    let univer = location.pathname
-      ?.replace("https://hemis.vercel.app/?api=", "")
+    let univer = location.search
+      ?.replace("?api=", "")
       ?.split("https://student.")[1]
       ?.split(".")[0];
     const { data } = await GetStudentsConfig(univer);
