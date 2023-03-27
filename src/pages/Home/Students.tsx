@@ -953,6 +953,9 @@ const Students: React.FC = () => {
       ?.replace("?api=", "")
       ?.split("https://student.")[1]
       ?.split(".")[0];
+
+    console.log(univer);
+
     const { data } = await GetStudentsConfig(univer);
     setStudents(data?.data);
   };

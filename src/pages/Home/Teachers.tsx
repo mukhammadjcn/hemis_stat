@@ -391,6 +391,9 @@ const Teachers: React.FC = () => {
       ?.replace("?api=", "")
       ?.split("https://student.")[1]
       ?.split(".")[0];
+
+    console.log(univer);
+
     const { data } = await GetTeachersConfig(univer);
     setTeachers(data?.data);
   };
