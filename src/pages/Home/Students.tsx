@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import ReactEcharts from "echarts-for-react";
 import { GetStudentsConfig } from "src/server/config/Urls";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const Students: React.FC = () => {
   const location = useLocation();
@@ -954,9 +955,9 @@ const Students: React.FC = () => {
       ?.split("https://student.")[1]
       ?.split(".")[0];
 
-    console.log(univer);
-
-    const { data } = await GetStudentsConfig(univer);
+    const { data } = await axios.get(
+      `https://student.${univer ?? "hemis"}.uz/rest/v1/public/stat-student`
+    );
     setStudents(data?.data);
   };
 
