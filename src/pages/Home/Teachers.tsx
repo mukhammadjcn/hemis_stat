@@ -9,6 +9,7 @@ import {
   FunnelConfig,
 } from "@ant-design/plots";
 import { Switch } from "antd";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { GetTeachersConfig } from "src/server/config/Urls";
@@ -392,9 +393,9 @@ const Teachers: React.FC = () => {
       ?.split("https://student.")[1]
       ?.split(".")[0];
 
-    console.log(univer);
-
-    const { data } = await GetTeachersConfig(univer);
+    const { data } = await axios.get(
+      `https://student.${univer ?? "hemis"}.uz/rest/v1/public/stat-employee`
+    );
     setTeachers(data?.data);
   };
 
