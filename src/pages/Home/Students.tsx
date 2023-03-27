@@ -17,6 +17,8 @@ const Students: React.FC = () => {
   const [students, setStudents] = useState<any>({});
   const [isgrant, setIsGrant] = useState<boolean>(true);
 
+  console.log(window.location.href);
+
   const configPie: PieConfig = {
     radius: 0.9,
     height: 360,

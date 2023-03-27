@@ -7,7 +7,6 @@ function App() {
       {/* All pages rendered here */}
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/*" element={<NotFound />} />
       </Routes>
     </Router>
   );
