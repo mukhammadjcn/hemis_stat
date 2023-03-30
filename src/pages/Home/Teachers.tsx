@@ -282,7 +282,7 @@ const Teachers: React.FC = () => {
     legend: false,
     label: {
       formatter: (datum) => {
-        return `${datum?.type}`;
+        return `${datum?.type} - ${datum?.value} ta`;
       },
       style: {
         opacity: 1,
@@ -290,14 +290,7 @@ const Teachers: React.FC = () => {
         fontSize: 14,
       },
     },
-    conversionTag: {
-      style: {
-        fill: "white",
-      },
-      formatter: (datum) => {
-        return `${datum?.value} ta`;
-      },
-    },
+    conversionTag: false,
     color: ["#70D7FF", "#30DB5B", "#FF6482", "#FFD426", "#DA8FFF"],
   };
 
