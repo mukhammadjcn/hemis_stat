@@ -291,12 +291,11 @@ const Teachers: React.FC = () => {
       },
     },
     conversionTag: {
+      style: {
+        fill: "white",
+      },
       formatter: (datum) => {
         return `${datum?.value} ta`;
-      },
-      style: {
-        fontSize: 14,
-        fill: "white",
       },
     },
     color: ["#70D7FF", "#30DB5B", "#FF6482", "#FFD426", "#DA8FFF"],
