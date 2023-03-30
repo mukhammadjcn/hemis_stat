@@ -12,41 +12,42 @@ import { Switch } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { GetTeachersConfig } from "src/server/config/Urls";
 
 const Teachers: React.FC = () => {
   const location = useLocation();
   const [teachers, setTeachers] = useState<any>({});
 
+  const GiveRegionStat = (
+    name = "academic_degree",
+    series = ["Erkak", "Ayol"],
+    chart = "default"
+  ) => {
+    let a: any[] = [];
+    if (chart == "default") {
+      series.forEach((type) => {
+        for (let nomi in teachers?.[name]) {
+          a.push({
+            name: type,
+            darajasi: nomi,
+            soni: teachers?.[name]?.[nomi]?.[type],
+          });
+        }
+      });
+    } else {
+      for (let nomi in teachers?.[name]) {
+        a.push({
+          type: nomi,
+          value: teachers?.[name]?.[nomi],
+        });
+      }
+    }
+    return a;
+  };
+
   const configPie: PieConfig = {
     radius: 0.9,
     height: 360,
-    data: [
-      {
-        type: "Stajer o‘qituvchi",
-        value: teachers?.position?.["Stajer-o‘qituvchi"],
-      },
-      {
-        type: "Asisstent",
-        value: teachers?.position?.["Assistent"],
-      },
-      {
-        type: "Katta o'qituvchi",
-        value: teachers?.position?.["Katta o‘qituvchi"],
-      },
-      {
-        type: "Dotsent",
-        value: teachers?.position?.["Dotsent"],
-      },
-      {
-        type: "Professor",
-        value: teachers?.position?.["Professor"],
-      },
-      {
-        type: "Kafedra mudiri",
-        value: teachers?.position?.["Kafedra mudiri"],
-      },
-    ],
+    data: GiveRegionStat("position", [], "pie"),
     innerRadius: 0.8,
     appendPadding: 10,
     colorField: "type",
@@ -69,7 +70,10 @@ const Teachers: React.FC = () => {
           textOverflow: "ellipsis",
           color: "white",
         },
-        content: `35 ta`,
+        content: `${GiveRegionStat("position", [], "pie").reduce(
+          (a, b) => a + b?.value,
+          0
+        )} ta`,
       },
     },
     color: ["#DA8FFF", "#30DB5B", "#FF6482", "#70D7FF", "#FFD426", "#7D7AFF"],
@@ -84,20 +88,7 @@ const Teachers: React.FC = () => {
   const configRahbarPie: PieConfig = {
     radius: 0.9,
     height: 360,
-    data: [
-      {
-        type: "Prorektorlar",
-        value: teachers?.direction?.Prorektor,
-      },
-      {
-        type: "Dekanlar",
-        value: teachers?.direction?.Dekan,
-      },
-      {
-        type: "Kafedra mudiri",
-        value: teachers?.direction?.["Kafedra mudiri"],
-      },
-    ],
+    data: GiveRegionStat("direction", [], "pie"),
     innerRadius: 0.6,
     appendPadding: 10,
     colorField: "type",
@@ -136,20 +127,10 @@ const Teachers: React.FC = () => {
   };
   const configIlmiyPie: PieConfig = {
     height: 360,
-    data: [
-      {
-        type: "O'qituvchilar (Ilmiy darajali)",
-        value: teachers?.academic?.Darajali,
-      },
-      {
-        type: "O'qituvchilar (Ilmiy darajasiz)",
-        value: teachers?.academic?.Darajasiz,
-      },
-    ],
+    data: GiveRegionStat("academic", [], "pie"),
     appendPadding: 10,
     colorField: "type",
     angleField: "value",
-
     color: ["#30DB5B", "#FF6482", "#FFD426"],
     legend: {
       itemHeight: 12,
@@ -160,41 +141,17 @@ const Teachers: React.FC = () => {
         },
       },
     },
+    label: {
+      style: {
+        opacity: 1,
+        fill: "white",
+        fontSize: 14,
+      },
+    },
   };
 
   const configColumn: ColumnConfig = {
-    data: [
-      {
-        name: "Erkak",
-        darajasi: "Darajasiz",
-        soni: teachers?.academic_degree?.Darajasiz?.Erkak,
-      },
-      {
-        name: "Erkak",
-        darajasi: "Fan nomzodi, PHD",
-        soni: teachers?.academic_degree?.["Fan nomzodi, PhD"]?.Erkak,
-      },
-      {
-        name: "Erkak",
-        darajasi: "Fan doktori, DCs",
-        soni: teachers?.academic_degree?.["Fan doktori, DSc"]?.Erkak,
-      },
-      {
-        name: "Ayol",
-        darajasi: "Darajasiz",
-        soni: teachers?.academic_degree?.Darajasiz?.Ayol,
-      },
-      {
-        name: "Ayol",
-        darajasi: "Fan nomzodi, PHD",
-        soni: teachers?.academic_degree?.["Fan nomzodi, PhD"]?.Ayol,
-      },
-      {
-        name: "Ayol",
-        darajasi: "Fan doktori, DCs",
-        soni: teachers?.academic_degree?.["Fan doktori, DSc"]?.Ayol,
-      },
-    ],
+    data: GiveRegionStat(),
     isGroup: true,
     yField: "soni",
     xField: "darajasi",
@@ -216,55 +173,33 @@ const Teachers: React.FC = () => {
       radius: [6, 6, 6, 6],
       fillOpacity: 1,
     },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
   };
 
   const configBar: BarConfig = {
-    data: [
-      {
-        year: "Unvonsiz",
-        value: teachers?.academic_rank?.Unvonsiz?.Erkak,
-        type: "Erkak",
-      },
-      {
-        year: "Dotsent",
-        value: teachers?.academic_rank?.Dotsent?.Erkak,
-        type: "Erkak",
-      },
-      {
-        year: "Katta ilmiy xodim",
-        value: teachers?.academic_rank?.["Katta ilmiy xodim"]?.Erkak,
-        type: "Erkak",
-      },
-      {
-        year: "Professor",
-        value: teachers?.academic_rank?.["Professor"]?.Erkak,
-        type: "Erkak",
-      },
-      {
-        year: "Unvonsiz",
-        value: teachers?.academic_rank?.Unvonsiz?.Ayol,
-        type: "Ayol",
-      },
-      {
-        year: "Dotsent",
-        value: teachers?.academic_rank?.Dotsent?.Ayol,
-        type: "Ayol",
-      },
-      {
-        year: "Katta ilmiy xodim",
-        value: teachers?.academic_rank?.["Katta ilmiy xodim"]?.Ayol,
-        type: "Ayol",
-      },
-      {
-        year: "Professor",
-        value: teachers?.academic_rank?.["Professor"]?.Ayol,
-        type: "Ayol",
-      },
-    ],
+    data: GiveRegionStat("academic_rank"),
     isStack: true,
-    yField: "year",
-    xField: "value",
-    seriesField: "type",
+    yField: "darajasi",
+    xField: "soni",
+    seriesField: "name",
     color: ["#DA8FFF", "#70D7FF"],
     legend: {
       itemHeight: 12,
@@ -278,75 +213,33 @@ const Teachers: React.FC = () => {
     barStyle: {
       radius: [6, 6, 6, 6],
       fillOpacity: 1,
+    },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
     },
   };
   const configAgeBar: BarConfig = {
-    data: [
-      {
-        year: "24-29 yosh",
-        value: 18,
-        type: "Erkak",
-      },
-      {
-        year: "30-35 yosh",
-        value: 12,
-        type: "Erkak",
-      },
-      {
-        year: "36-41 yosh",
-        value: 8,
-        type: "Erkak",
-      },
-      {
-        year: "42-47 yosh",
-        value: 16,
-        type: "Erkak",
-      },
-      {
-        year: "48-53 yosh",
-        value: 16,
-        type: "Erkak",
-      },
-      {
-        year: "66+ yosh",
-        value: 16,
-        type: "Erkak",
-      },
-      {
-        year: "24-29 yosh",
-        value: 16,
-        type: "Ayol",
-      },
-      {
-        year: "30-35 yosh",
-        value: 14,
-        type: "Ayol",
-      },
-      {
-        year: "36-41 yosh",
-        value: 12,
-        type: "Ayol",
-      },
-      {
-        year: "42-47 yosh",
-        value: 20,
-        type: "Ayol",
-      },
-      {
-        year: "48-53 yosh",
-        value: 16,
-        type: "Ayol",
-      },
-      {
-        year: "66+ yosh",
-        value: 16,
-        type: "Ayol",
-      },
-    ],
+    data: GiveRegionStat("age"),
     isStack: true,
-    yField: "year",
-    xField: "value",
-    seriesField: "type",
+    yField: "darajasi",
+    xField: "soni",
+    seriesField: "name",
     color: ["#DA8FFF", "#70D7FF"],
     legend: {
       itemHeight: 12,
@@ -360,28 +253,50 @@ const Teachers: React.FC = () => {
     barStyle: {
       radius: [6, 6, 6, 6],
       fillOpacity: 1,
+    },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
     },
   };
 
   const configFunnel: FunnelConfig = {
-    data: [
-      { name: "Asosiy ish joyi", number: 4500 },
-      { name: "O‘rindoshlik (ichki asosiy)", number: 3500 },
-      { name: "O‘rindoshlik ( ichki-qo‘shimcha)", number: 3000 },
-      { name: "O‘rindoshlik tashqi", number: 2500 },
-      { name: "Soatbay", number: 1000 },
-    ],
-    xField: "name",
-    yField: "number",
+    data: GiveRegionStat("employment_form", [], "pie"),
+    xField: "type",
+    yField: "value",
     legend: false,
     label: {
       formatter: (datum) => {
-        return `${datum?.name}`;
+        return `${datum?.type}`;
+      },
+      style: {
+        opacity: 1,
+        fill: "white",
+        fontSize: 14,
       },
     },
     conversionTag: {
       formatter: (datum) => {
-        return `${datum?.number} ta`;
+        return `${datum?.value} ta`;
+      },
+      style: {
+        fontSize: 14,
+        fill: "white",
       },
     },
     color: ["#70D7FF", "#30DB5B", "#FF6482", "#FFD426", "#DA8FFF"],
@@ -473,10 +388,10 @@ const Teachers: React.FC = () => {
         >
           <div className="flex">
             <h2 className="title">O‘qituvchilar ilmiy daraja bo‘yicha</h2>
-            <h3 className="info">
+            {/* <h3 className="info">
               Umumiy
               <Switch style={{ marginLeft: 16, background: "#4B5364" }} />
-            </h3>
+            </h3> */}
           </div>
           <Column {...configColumn} />
         </section>
@@ -490,7 +405,14 @@ const Teachers: React.FC = () => {
               O‘qituvchilar ilmiy(unvon) daraja bo‘yicha
             </h2>
             <h3>
-              Jami: <b>6000 ta</b>
+              Jami:{" "}
+              <b>
+                {GiveRegionStat("academic_rank").reduce(
+                  (a, b) => a + b?.soni,
+                  0
+                )}{" "}
+                ta
+              </b>
             </h3>
           </div>
           <Bar {...configBar} />
@@ -514,9 +436,16 @@ const Teachers: React.FC = () => {
           className="home__teachers-bar"
         >
           <div className="flex">
-            <h2 className="title">Ilmiy salohiyat</h2>
+            <h2 className="title">O'qituvchilar ilmiy salohiyat</h2>
             <h3>
-              Jami: <b>200 ta</b>
+              Jami:{" "}
+              <b>
+                {GiveRegionStat("academic", [], "pie").reduce(
+                  (a, b) => a + b?.value,
+                  0
+                )}{" "}
+                ta
+              </b>
             </h3>
           </div>
           <Pie {...configIlmiyPie} />
@@ -531,9 +460,9 @@ const Teachers: React.FC = () => {
         >
           <div className="flex">
             <h2 className="title">O‘qituvchilar yoshi bo‘yicha</h2>
-            <h3>
+            {/* <h3>
               Jami: <b>6000 ta</b>
-            </h3>
+            </h3> */}
           </div>
           <Bar {...configAgeBar} />
         </section>
@@ -544,9 +473,9 @@ const Teachers: React.FC = () => {
         >
           <div className="flex">
             <h2 className="title">O‘qituvchilar mehnat shakli bo‘yicha</h2>
-            <h3>
+            {/* <h3>
               Jami: <b>6000 ta</b>
-            </h3>
+            </h3> */}
           </div>
           <Funnel {...configFunnel} />
         </section>

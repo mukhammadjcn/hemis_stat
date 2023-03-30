@@ -9,7 +9,6 @@ import {
 import { Segmented } from "antd";
 import React, { useEffect, useState } from "react";
 import ReactEcharts from "echarts-for-react";
-import { GetStudentsConfig } from "src/server/config/Urls";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -17,6 +16,23 @@ const Students: React.FC = () => {
   const location = useLocation();
   const [students, setStudents] = useState<any>({});
   const [isgrant, setIsGrant] = useState<boolean>(true);
+
+  const GiveRegionStat = (
+    name = "region",
+    series = ["Bakalavr", "Magistr"]
+  ) => {
+    let a: any[] = [];
+    series.forEach((type) => {
+      for (let nomi in students?.[name]) {
+        a.push({
+          name: type,
+          darajasi: nomi,
+          soni: students?.[name]?.[nomi]?.[type],
+        });
+      }
+    });
+    return a;
+  };
 
   const configPie: PieConfig = {
     radius: 0.9,
@@ -65,32 +81,11 @@ const Students: React.FC = () => {
   };
 
   const configAgeBar: BarConfig = {
-    data: [
-      {
-        year: "30 yoshgacha",
-        value: students?.age?.["30 yoshgacha"]?.Erkak,
-        type: "Erkak",
-      },
-      {
-        year: "30 yoshdan katta",
-        value: students?.age?.["30 yoshdan katta"]?.Erkak,
-        type: "Erkak",
-      },
-      {
-        year: "30 yoshgacha",
-        value: students?.age?.["30 yoshgacha"]?.Ayol,
-        type: "Ayol",
-      },
-      {
-        year: "30 yoshdan katta",
-        value: students?.age?.["30 yoshdan katta"]?.Ayol,
-        type: "Ayol",
-      },
-    ],
+    data: GiveRegionStat("age", ["Erkak", "Ayol"]),
     isStack: true,
-    yField: "year",
-    xField: "value",
-    seriesField: "type",
+    yField: "darajasi",
+    xField: "soni",
+    seriesField: "name",
     color: ["#70D7FF", "#DA8FFF"],
     legend: {
       itemHeight: 12,
@@ -123,57 +118,11 @@ const Students: React.FC = () => {
           fontSize: 14,
         },
       },
-      subTickLine: {
-        style: {
-          stroke: "black",
-          lineWidth: 2,
-          lineDash: [4, 5],
-          strokeOpacity: 0.7,
-          shadowColor: "black",
-          shadowBlur: 10,
-          shadowOffsetX: 5,
-          shadowOffsetY: 5,
-          cursor: "pointer",
-        },
-      },
     },
   };
 
   const configNationColumn: ColumnConfig = {
-    data: [
-      {
-        name: "Bakalavr",
-        darajasi: "O‘zbekiston fuqarosi",
-        soni: students?.citizenship?.["O‘zbekiston Respublikasi fuqarosi"]
-          ?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Xorijiy davlat fuqarosi",
-        soni: students?.citizenship?.["Xorijiy davlat fuqarosi"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Fuqaroligi yo‘q shaxs",
-        soni: students?.citizenship?.["Fuqaroligi yo‘q shaxslar"]?.Bakalavr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "O‘zbekiston fuqarosi",
-        soni: students?.citizenship?.["O‘zbekiston Respublikasi fuqarosi"]
-          ?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Xorijiy davlat fuqarosi",
-        soni: students?.citizenship?.["Xorijiy davlat fuqarosi"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Fuqaroligi yo‘q shaxs",
-        soni: students?.citizenship?.["Fuqaroligi yo‘q shaxslar"]?.Magistr,
-      },
-    ],
+    data: GiveRegionStat("citizenship"),
     isGroup: true,
     yField: "soni",
     xField: "darajasi",
@@ -214,188 +163,17 @@ const Students: React.FC = () => {
   };
 
   const kamalakColumn: ColumnConfig = {
-    data: [
-      {
-        name: "Kunduzgi",
-        darajasi: "1-kurs",
-        soni: students?.level?.["1-kurs"].Kunduzgi,
-      },
-      {
-        name: "Kunduzgi",
-        darajasi: "2-kurs",
-        soni: students?.level?.["2-kurs"].Kunduzgi,
-      },
-      {
-        name: "Kunduzgi",
-        darajasi: "3-kurs",
-        soni: students?.level?.["3-kurs"].Kunduzgi,
-      },
-      {
-        name: "Kunduzgi",
-        darajasi: "4-kurs",
-        soni: students?.level?.["4-kurs"].Kunduzgi,
-      },
-      {
-        name: "Kunduzgi",
-        darajasi: "5-kurs",
-        soni: students?.level?.["5-kurs"].Kunduzgi,
-      },
-      {
-        name: "Kunduzgi",
-        darajasi: "6-kurs",
-        soni: students?.level?.["6-kurs"].Kunduzgi,
-      },
-      {
-        name: "Maxsus sirtqi",
-        darajasi: "1-kurs",
-        soni: students?.level?.["1-kurs"]?.["Maxsus sirtqi"],
-      },
-      {
-        name: "Maxsus sirtqi",
-        darajasi: "2-kurs",
-        soni: students?.level?.["2-kurs"]?.["Maxsus sirtqi"],
-      },
-      {
-        name: "Maxsus sirtqi",
-        darajasi: "3-kurs",
-        soni: students?.level?.["3-kurs"]?.["Maxsus sirtqi"],
-      },
-      {
-        name: "Maxsus sirtqi",
-        darajasi: "4-kurs",
-        soni: students?.level?.["4-kurs"]?.["Maxsus sirtqi"],
-      },
-      {
-        name: "Maxsus sirtqi",
-        darajasi: "5-kurs",
-        soni: students?.level?.["5-kurs"]?.["Maxsus sirtqi"],
-      },
-      {
-        name: "Maxsus sirtqi",
-        darajasi: "6-kurs",
-        soni: students?.level?.["6-kurs"]?.["Maxsus sirtqi"],
-      },
-      {
-        name: "Kechki",
-        darajasi: "1-kurs",
-        soni: students?.level?.["1-kurs"]?.Kechki,
-      },
-      {
-        name: "Kechki",
-        darajasi: "2-kurs",
-        soni: students?.level?.["2-kurs"]?.Kechki,
-      },
-      {
-        name: "Kechki",
-        darajasi: "3-kurs",
-        soni: students?.level?.["3-kurs"]?.Kechki,
-      },
-      {
-        name: "Kechki",
-        darajasi: "4-kurs",
-        soni: students?.level?.["4-kurs"]?.Kechki,
-      },
-      {
-        name: "Kechki",
-        darajasi: "5-kurs",
-        soni: students?.level?.["5-kurs"]?.Kechki,
-      },
-      {
-        name: "Kechki",
-        darajasi: "6-kurs",
-        soni: students?.level?.["6-kurs"]?.Kechki,
-      },
-      {
-        name: "Sirtqi",
-        darajasi: "1-kurs",
-        soni: students?.level?.["1-kurs"]?.Sirtqi,
-      },
-      {
-        name: "Sirtqi",
-        darajasi: "2-kurs",
-        soni: students?.level?.["2-kurs"]?.Sirtqi,
-      },
-      {
-        name: "Sirtqi",
-        darajasi: "3-kurs",
-        soni: students?.level?.["3-kurs"]?.Sirtqi,
-      },
-      {
-        name: "Sirtqi",
-        darajasi: "4-kurs",
-        soni: students?.level?.["4-kurs"]?.Sirtqi,
-      },
-      {
-        name: "Sirtqi",
-        darajasi: "5-kurs",
-        soni: students?.level?.["5-kurs"]?.Sirtqi,
-      },
-      {
-        name: "Sirtqi",
-        darajasi: "6-kurs",
-        soni: students?.level?.["6-kurs"]?.Sirtqi,
-      },
-      {
-        name: "Qo‘shma",
-        darajasi: "1-kurs",
-        soni: students?.level?.["1-kurs"]?.["Qo‘shma"],
-      },
-      {
-        name: "Qo‘shma",
-        darajasi: "2-kurs",
-        soni: students?.level?.["2-kurs"]?.["Qo‘shma"],
-      },
-      {
-        name: "Qo‘shma",
-        darajasi: "3-kurs",
-        soni: students?.level?.["3-kurs"]?.["Qo‘shma"],
-      },
-      {
-        name: "Qo‘shma",
-        darajasi: "4-kurs",
-        soni: students?.level?.["4-kurs"]?.["Qo‘shma"],
-      },
-      {
-        name: "Qo‘shma",
-        darajasi: "5-kurs",
-        soni: students?.level?.["5-kurs"]?.["Qo‘shma"],
-      },
-      {
-        name: "Qo‘shma",
-        darajasi: "6-kurs",
-        soni: students?.level?.["6-kurs"]?.["Qo‘shma"],
-      },
-      {
-        name: "Masofaviy",
-        darajasi: "1-kurs",
-        soni: students?.level?.["1-kurs"]?.Masofaviy,
-      },
-      {
-        name: "Masofaviy",
-        darajasi: "2-kurs",
-        soni: students?.level?.["2-kurs"]?.Masofaviy,
-      },
-      {
-        name: "Masofaviy",
-        darajasi: "3-kurs",
-        soni: students?.level?.["3-kurs"]?.Masofaviy,
-      },
-      {
-        name: "Masofaviy",
-        darajasi: "4-kurs",
-        soni: students?.level?.["4-kurs"]?.Masofaviy,
-      },
-      {
-        name: "Masofaviy",
-        darajasi: "5-kurs",
-        soni: students?.level?.["5-kurs"]?.Masofaviy,
-      },
-      {
-        name: "Masofaviy",
-        darajasi: "6-kurs",
-        soni: students?.level?.["6-kurs"]?.Masofaviy,
-      },
-    ],
+    data: GiveRegionStat("level", [
+      "Ikkinchi oliy (kechki)",
+      "Ikkinchi oliy (kunduzgi)",
+      "Ikkinchi oliy (sirtqi)",
+      "Kechki",
+      "Kunduzgi",
+      "Masofaviy",
+      "Maxsus sirtqi",
+      "Qo‘shma",
+      "Sirtqi",
+    ]),
     isStack: true,
     yField: "soni",
     xField: "darajasi",
@@ -436,72 +214,11 @@ const Students: React.FC = () => {
   };
 
   const kamalakTypeColumn: ColumnConfig = {
-    data: [
-      {
-        name: "Kunduzgi",
-        darajasi: "Erkak",
-        soni: students?.education_form?.["Kunduzgi"]?.Erkak,
-      },
-      {
-        name: "Kunduzgi",
-        darajasi: "Ayol",
-        soni: students?.education_form?.["Kunduzgi"]?.Ayol,
-      },
-      {
-        name: "Kechki",
-        darajasi: "Erkak",
-        soni: students?.education_form?.["Kechki"]?.Erkak,
-      },
-      {
-        name: "Kechki",
-        darajasi: "Ayol",
-        soni: students?.education_form?.["Kechki"]?.Ayol,
-      },
-      {
-        name: "Sirtqi",
-        darajasi: "Erkak",
-        soni: students?.education_form?.["Sirtqi"]?.Erkak,
-      },
-      {
-        name: "Sirtqi",
-        darajasi: "Ayol",
-        soni: students?.education_form?.["Sirtqi"]?.Ayol,
-      },
-      {
-        name: "Maxsus sirtqi",
-        darajasi: "Erkak",
-        soni: students?.education_form?.["Maxsus sirtqi"]?.Erkak,
-      },
-      {
-        name: "Maxsus sirtqi",
-        darajasi: "Ayol",
-        soni: students?.education_form?.["Maxsus sirtqi"]?.Ayol,
-      },
-      {
-        name: "Qo'shma",
-        darajasi: "Erkak",
-        soni: students?.education_form?.["Qo'shma"]?.Erkak,
-      },
-      {
-        name: "Qo'shma",
-        darajasi: "Ayol",
-        soni: students?.education_form?.["Qo'shma"]?.Ayol,
-      },
-      {
-        name: "Masofaviy",
-        darajasi: "Erkak",
-        soni: students?.education_form?.["Masofaviy"]?.Erkak,
-      },
-      {
-        name: "Masofaviy",
-        darajasi: "Ayol",
-        soni: students?.education_form?.["Masofaviy"]?.Ayol,
-      },
-    ],
+    data: GiveRegionStat("education_form", ["Ayol", "Erkak"]),
     isStack: true,
     yField: "soni",
-    xField: "name",
-    seriesField: "darajasi",
+    xField: "darajasi",
+    seriesField: "name",
     color: ["#DA8FFF", "#70D7FF"],
     legend: {
       position: "bottom",
@@ -538,149 +255,7 @@ const Students: React.FC = () => {
   };
 
   const configColumnHududlar: ColumnConfig = {
-    data: [
-      {
-        name: "Bakalavr",
-        darajasi: "Qoraqalpog‘iston",
-        soni: students?.region?.["Qoraqalpog‘iston Resp."]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Xorazm",
-        soni: students?.region?.["Xorazm viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Buxoro",
-        soni: students?.region?.["Buxoro viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Navoiy",
-        soni: students?.region?.["Navoiy viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Qashqadaryo",
-        soni: students?.region?.["Qashqadaryo viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Surxondaryo",
-        soni: students?.region?.["Surxondaryo viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Samarqand",
-        soni: students?.region?.["Samarqand viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Jizzax",
-        soni: students?.region?.["Jizzah viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Sirdaryo",
-        soni: students?.region?.["Sirdaryo viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Farg‘ona",
-        soni: students?.region?.["Farg'ona viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Namangan",
-        soni: students?.region?.["Namangan viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Andijon",
-        soni: students?.region?.["Andijon viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Toshkent",
-        soni: students?.region?.["Toshkent viloyati"]?.Bakalavr,
-      },
-      {
-        name: "Bakalavr",
-        darajasi: "Toshkent shahri",
-        soni: students?.region?.["Toshkent shahri"]?.Bakalavr,
-      },
-
-      {
-        name: "Magistr",
-        darajasi: "Qoraqalpog‘iston",
-        soni: students?.region?.["Qoraqalpog‘iston Resp."]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Xorazm",
-        soni: students?.region?.["Xorazm viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Buxoro",
-        soni: students?.region?.["Buxoro viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Navoiy",
-        soni: students?.region?.["Navoiy viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Qashqadaryo",
-        soni: students?.region?.["Qashqadaryo viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Surxondaryo",
-        soni: students?.region?.["Surxondaryo viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Samarqand",
-        soni: students?.region?.["Samarqand viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Jizzax",
-        soni: students?.region?.["Jizzah viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Sirdaryo",
-        soni: students?.region?.["Sirdaryo viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Farg‘ona",
-        soni: students?.region?.["Farg'ona viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Namangan",
-        soni: students?.region?.["Namangan viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Andijon",
-        soni: students?.region?.["Andijon viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Toshkent",
-        soni: students?.region?.["Toshkent viloyati"]?.Magistr,
-      },
-      {
-        name: "Magistr",
-        darajasi: "Toshkent shahri",
-        soni: students?.region?.["Toshkent shahri"]?.Magistr,
-      },
-    ],
+    data: GiveRegionStat(),
     isStack: true,
     yField: "soni",
     xField: "darajasi",
@@ -722,62 +297,11 @@ const Students: React.FC = () => {
   };
 
   const configBar: BarConfig = {
-    data: [
-      {
-        year: "O‘z uyida",
-        value: students?.accommodation?.["O‘z uyida"]?.Bakalavr,
-        type: "Bakalavr",
-      },
-      {
-        year: "Qarindoshing uyida",
-        value: students?.accommodation?.["Qarindoshining uyida"]?.Bakalavr,
-        type: "Bakalavr",
-      },
-      {
-        year: "Tanishing uyida",
-        value: students?.accommodation?.["Tanishining uyida"]?.Bakalavr,
-        type: "Bakalavr",
-      },
-      {
-        year: "Ijaradagi uyda",
-        value: students?.accommodation?.["Ijaradagi uyda"]?.Bakalavr,
-        type: "Bakalavr",
-      },
-      {
-        year: "Talabalar turar joyida",
-        value: students?.accommodation?.["Talabalar turar joyida"]?.Bakalavr,
-        type: "Bakalavr",
-      },
-      {
-        year: "O‘z uyida",
-        value: students?.accommodation?.["O‘z uyida"]?.Magistr,
-        type: "Magistr",
-      },
-      {
-        year: "Qarindoshing uyida",
-        value: students?.accommodation?.["Qarindoshining uyida"]?.Magistr,
-        type: "Magistr",
-      },
-      {
-        year: "Tanishing uyida",
-        value: students?.accommodation?.["Tanishining uyida"]?.Magistr,
-        type: "Magistr",
-      },
-      {
-        year: "Ijaradagi uyda",
-        value: students?.accommodation?.["Ijaradagi uyda"]?.Magistr,
-        type: "Magistr",
-      },
-      {
-        year: "Talabalar turar joyida",
-        value: students?.accommodation?.["Talabalar turar joyida"]?.Magistr,
-        type: "Magistr",
-      },
-    ],
+    data: GiveRegionStat("accommodation"),
     isStack: true,
-    yField: "year",
-    xField: "value",
-    seriesField: "type",
+    yField: "darajasi",
+    xField: "soni",
+    seriesField: "name",
     color: ["#7D7AFF", "#30DB5B"],
     legend: {
       itemHeight: 12,
@@ -1059,9 +583,9 @@ const Students: React.FC = () => {
         >
           <div className="flex">
             <h2 className="title">Talabalar turar joy bo‘yicha</h2>
-            <h3>
+            {/* <h3>
               Jami: <b>6000 ta</b>
-            </h3>
+            </h3> */}
           </div>
 
           <Bar {...configBar} />

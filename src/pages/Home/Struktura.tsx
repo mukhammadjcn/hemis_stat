@@ -6,26 +6,24 @@ import {
   BarConfig,
   ColumnConfig,
 } from "@ant-design/plots";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
+import { useLocation } from "react-router-dom";
 
 const Struktura: React.FC = () => {
+  const location = useLocation();
+  const [audi, setAudi] = useState<any[]>([]);
+  const [bolim, setbolim] = useState<any[]>([]);
+  const [guruh, setguruh] = useState<any[]>([]);
+  const [yonalish, setyonalish] = useState<any[]>([]);
+
   const configPie: PieConfig = {
     height: 360,
-    data: [
-      {
-        type: "Bakalavr",
-        value: Math.floor(Math.random() * 20) + 20,
-      },
-      {
-        type: "Magistr",
-        value: Math.floor(Math.random() * 20) + 20,
-      },
-    ],
+    data: yonalish,
     appendPadding: 10,
-    colorField: "type",
-    angleField: "value",
-
+    colorField: "name",
+    angleField: "count",
     color: ["#7D7AFF", "#30DB5B"],
     legend: {
       itemHeight: 12,
@@ -36,33 +34,18 @@ const Struktura: React.FC = () => {
         },
       },
     },
+    label: {
+      style: {
+        opacity: 1,
+        fill: "white",
+        fontSize: 14,
+      },
+    },
   };
-
   const configBar: BarConfig = {
-    data: [
-      {
-        name: "Fakultetlar",
-        value: Math.floor(Math.random() * 20) + 20,
-      },
-      {
-        name: "Kafedralar",
-        value: Math.floor(Math.random() * 20) + 20,
-      },
-      {
-        name: "Boshqarmalar",
-        value: Math.floor(Math.random() * 20) + 20,
-      },
-      {
-        name: "Bo‘limlar",
-        value: Math.floor(Math.random() * 20) + 20,
-      },
-      {
-        name: "Markazlar",
-        value: Math.floor(Math.random() * 20) + 20,
-      },
-    ],
+    data: bolim,
     yField: "name",
-    xField: "value",
+    xField: "count",
     seriesField: "name",
     color: ["#7D7AFF", "#30DB5B"],
     legend: {
@@ -78,36 +61,29 @@ const Struktura: React.FC = () => {
       radius: [6, 6, 6, 6],
       fillOpacity: 1,
     },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
   };
-
   const configColumn: ColumnConfig = {
-    data: [
-      {
-        name: "1-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
-      },
-      {
-        name: "2-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
-      },
-      {
-        name: "3-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
-      },
-      {
-        name: "4-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
-      },
-      {
-        name: "5-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
-      },
-      {
-        name: "6-kurs",
-        soni: Math.floor(Math.random() * 20) + 20,
-      },
-    ],
-    yField: "soni",
+    data: guruh,
+    yField: "count",
     xField: "name",
     seriesField: "name",
     color: ["#7D7AFF", "#30DB5B"],
@@ -124,36 +100,30 @@ const Struktura: React.FC = () => {
       radius: [6, 6, 6, 6],
       fillOpacity: 1,
     },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
   };
   const apexConfig = {
     series: [
       {
-        data: [
-          {
-            x: "Amaliy",
-            y: 48,
-          },
-          {
-            x: "Seminar",
-            y: 24,
-          },
-          {
-            x: "Ma’ruza",
-            y: 32,
-          },
-          {
-            x: "Laboratoriya",
-            y: 30,
-          },
-          {
-            x: "Komputer",
-            y: 15,
-          },
-          {
-            x: "Zamonaviy",
-            y: 64,
-          },
-        ],
+        data: audi,
       },
     ],
     options: {
@@ -165,6 +135,30 @@ const Struktura: React.FC = () => {
       },
     },
   };
+
+  const GetStudents = async () => {
+    let univer = location.search
+      ?.replace("?api=", "")
+      ?.split("https://student.")[1]
+      ?.split(".")[0];
+
+    const { data } = await axios.get(
+      `https://student.${univer ?? "hemis"}.uz/rest/v1/public/stat-structure`
+    );
+    setAudi(
+      data?.data?.specialities?.reduce(
+        (a: any, b: any) => [{ x: b?.name, y: b?.count }, ...a],
+        []
+      )
+    );
+    setguruh(data?.data?.groups);
+    setbolim(data?.data?.departments);
+    setyonalish(data?.data?.specialities);
+  };
+
+  useEffect(() => {
+    GetStudents();
+  }, []);
 
   return (
     <div className="home__teachers">
@@ -185,7 +179,7 @@ const Struktura: React.FC = () => {
           <div className="flex">
             <h2 className="title">Auditoriyalar soni</h2>
             <h3>
-              Jami: <b>6000 ta</b>
+              Jami: <b>{audi.reduce((a, b) => a + b?.y, 0)} ta</b>
             </h3>
           </div>
 
@@ -206,7 +200,7 @@ const Struktura: React.FC = () => {
           <div className="flex">
             <h2 className="title">Yo‘nalishlar</h2>
             <h3>
-              Jami: <b>6000 ta</b>
+              Jami: <b>{yonalish.reduce((a, b) => a + b?.count, 0)} ta</b>
             </h3>
           </div>
 
@@ -220,7 +214,7 @@ const Struktura: React.FC = () => {
           <div className="flex">
             <h2 className="title">Bo‘limlar</h2>
             <h3>
-              Jami: <b>6000 ta</b>
+              Jami: <b>{bolim.reduce((a, b) => a + b?.count, 0)} ta</b>
             </h3>
           </div>
 
