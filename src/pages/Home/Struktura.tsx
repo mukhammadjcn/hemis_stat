@@ -140,7 +140,7 @@ const Struktura: React.FC = () => {
     let univer = location.search?.replace("?api=", "");
 
     const { data } = await axios.get(
-      `${univer ?? "https://student.hemis.uz/rest/v2/"}/public/stat-structure`
+      `${univer ?? "https://student.hemis.uz/rest/v2/"}v1/public/stat-structure`
     );
     setAudi(
       data?.data?.specialities?.reduce(
