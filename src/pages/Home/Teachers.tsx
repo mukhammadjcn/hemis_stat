@@ -296,6 +296,45 @@ const Teachers: React.FC = () => {
     conversionTag: false,
     color: ["#70D7FF", "#30DB5B", "#FF6482", "#FFD426", "#DA8FFF"],
   };
+  const configFormBar: BarConfig = {
+    data: GiveRegionStat("employment_form", [], "pie"),
+    yField: "type",
+    xField: "value",
+    seriesField: "type",
+    color: ["#7D7AFF", "#30DB5B"],
+    legend: {
+      itemHeight: 12,
+      position: "bottom",
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
+    },
+    barStyle: {
+      radius: [6, 6, 6, 6],
+      fillOpacity: 1,
+    },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+  };
 
   const GetTeachers = async () => {
     let univer = location.search?.replace("?api=", "");
@@ -372,6 +411,7 @@ const Teachers: React.FC = () => {
           </div>
         </div>
       </section>
+
       <div className="row">
         <section
           data-aos="fade-right"
@@ -469,7 +509,8 @@ const Teachers: React.FC = () => {
               Jami: <b>6000 ta</b>
             </h3> */}
           </div>
-          <Funnel {...configFunnel} />
+          {/* <Funnel {...configFunnel} /> */}
+          <Bar {...configFormBar} />
         </section>
       </div>
     </div>
