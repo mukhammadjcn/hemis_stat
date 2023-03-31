@@ -137,7 +137,7 @@ const Struktura: React.FC = () => {
   };
 
   const GetStudents = async () => {
-    let univer = location.search?.replace("https://hemis.vercel.app/?api=", "");
+    let univer = location.search?.replace("?api=", "");
 
     const { data } = await axios.get(
       `${univer ?? "https://student.hemis.uz/rest/v2/"}/public/stat-structure`
