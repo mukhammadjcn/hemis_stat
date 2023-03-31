@@ -474,13 +474,10 @@ const Students: React.FC = () => {
   };
 
   const GetStudents = async () => {
-    let univer = location.search
-      ?.replace("?api=", "")
-      ?.split("https://student.")[1]
-      ?.split(".")[0];
+    let univer = location.search?.replace("https://hemis.vercel.app/?api=", "");
 
     const { data } = await axios.get(
-      `https://student.${univer ?? "hemis"}.uz/rest/v1/public/stat-student`
+      `${univer ?? "https://student.hemis.uz/rest/v2/"}/public/stat-student`
     );
     setStudents(data?.data);
   };
