@@ -285,12 +285,12 @@ const Students: React.FC = () => {
       },
     },
     xAxis: {
-      tickCount: 6,
+      tickCount: 14,
       label: {
         style: {
           opacity: 1,
           fill: "white",
-          fontSize: 14,
+          fontSize: 11,
         },
       },
     },

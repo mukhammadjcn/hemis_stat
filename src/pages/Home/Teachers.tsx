@@ -111,7 +111,10 @@ const Teachers: React.FC = () => {
           textOverflow: "ellipsis",
           color: "white",
         },
-        content: "567 ta",
+        content: `${GiveRegionStat("direction", [], "pie").reduce(
+          (a, b) => a + b?.value,
+          0
+        )}  ta`,
       },
     },
     color: ["#FF6482", "#FFD426", "#DA8FFF"],
@@ -418,7 +421,7 @@ const Teachers: React.FC = () => {
           className="home__teachers-bar"
         >
           <div className="flex">
-            <h2 className="title">Raxbar xodimlar</h2>
+            <h2 className="title">Rahbar xodimlar</h2>
           </div>
           <Pie {...configRahbarPie} />
         </section>
