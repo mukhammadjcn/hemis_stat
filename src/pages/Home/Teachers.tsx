@@ -310,6 +310,7 @@ const Teachers: React.FC = () => {
           fill: "white",
         },
       },
+      flipPage: false,
     },
     barStyle: {
       radius: [6, 6, 6, 6],

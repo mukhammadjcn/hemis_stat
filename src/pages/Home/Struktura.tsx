@@ -24,7 +24,7 @@ const Struktura: React.FC = () => {
     appendPadding: 10,
     colorField: "name",
     angleField: "count",
-    color: ["#7D7AFF", "#30DB5B"],
+    color: ["#7D7AFF", "#30DB5B", "#FF6482", "#FFD426"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -56,6 +56,7 @@ const Struktura: React.FC = () => {
           fill: "white",
         },
       },
+      flipPage: false,
     },
     barStyle: {
       radius: [6, 6, 6, 6],
@@ -143,7 +144,7 @@ const Struktura: React.FC = () => {
       `${univer ?? "https://student.hemis.uz/rest/v2/"}v1/public/stat-structure`
     );
     setAudi(
-      data?.data?.specialities?.reduce(
+      data?.data?.auditoriums?.reduce(
         (a: any, b: any) => [{ x: b?.name, y: b?.count }, ...a],
         []
       )

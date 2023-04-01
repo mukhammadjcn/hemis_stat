@@ -186,30 +186,18 @@
               font-weight: 600;
               font-size: 20px;
               line-height: 24px;
+              color: white;
             }
             h4 {
               margin-top: 6px;
               font-size: 18px;
               font-weight: 600;
               line-height: 22px;
+              color: white;
             }
-            &:first-child {
-              h3 {
-                color: #ffffff;
-              }
-
-              h4 {
-                color: #ffffff;
-              }
-            }
-            &:last-child {
-              h3 {
-                color: #ffffff;
-              }
-
-              h4 {
-                color: #ffffff;
-              }
+            &:nth-child(3) {
+              flex-grow: 1;
+              text-align: end;
             }
           }
         }

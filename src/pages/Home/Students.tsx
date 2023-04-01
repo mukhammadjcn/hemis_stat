@@ -19,18 +19,30 @@ const Students: React.FC = () => {
 
   const GiveRegionStat = (
     name = "region",
-    series = ["Bakalavr", "Magistr"]
+    series = ["Bakalavr", "Magistr"],
+    chart = "default"
   ) => {
     let a: any[] = [];
-    series.forEach((type) => {
+
+    if (chart == "default") {
+      series.forEach((type) => {
+        students?.[name] &&
+          Object.getOwnPropertyNames(students?.[name]).map((nomi) => {
+            a.push({
+              name: type,
+              darajasi: nomi,
+              soni: students?.[name]?.[nomi]?.[type],
+            });
+          });
+      });
+    } else {
       for (let nomi in students?.[name]) {
         a.push({
-          name: type,
-          darajasi: nomi,
-          soni: students?.[name]?.[nomi]?.[type],
+          type: nomi,
+          value: students?.[name]?.[nomi],
         });
       }
-    });
+    }
     return a;
   };
 
@@ -39,17 +51,21 @@ const Students: React.FC = () => {
     height: 360,
     data: [
       {
-        type: "Bakalavr",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: isgrant
+          ? students?.payment?.["Davlat granti"]?.Bakalavr
+          : students?.payment?.["To‘lov-shartnoma"]?.Bakalavr,
+        name: "Bakalavr",
       },
       {
-        type: "Magistr",
-        value: Math.floor(Math.random() * 20) + 20,
+        value: isgrant
+          ? students?.payment?.["Davlat granti"]?.Magistr
+          : students?.payment?.["To‘lov-shartnoma"]?.Magistr,
+        name: "Magistr",
       },
     ],
     innerRadius: 0.8,
     appendPadding: 10,
-    colorField: "type",
+    colorField: "name",
     angleField: "value",
     statistic: {
       title: false,
@@ -60,20 +76,32 @@ const Students: React.FC = () => {
           textOverflow: "ellipsis",
           color: "white",
         },
-        content: "567 ta",
+        content: `${
+          isgrant
+            ? students?.payment?.["Davlat granti"]?.Bakalavr +
+              students?.payment?.["Davlat granti"]?.Magistr
+            : students?.payment?.["To‘lov-shartnoma"]?.Bakalavr +
+              students?.payment?.["To‘lov-shartnoma"]?.Magistr
+        }  ta`,
       },
     },
     color: ["#7D7AFF", "#30DB5B"],
     legend: {
       itemHeight: 12,
       position: "bottom",
-      color: "#ffffff",
       itemName: {
         style: {
           fill: "white",
+          fontSize: 14,
         },
       },
-      fill: "#ffffff",
+    },
+    label: {
+      style: {
+        opacity: 1,
+        fill: "white",
+        fontSize: 12,
+      },
     },
     style: {
       color: "white",
@@ -164,15 +192,15 @@ const Students: React.FC = () => {
 
   const kamalakColumn: ColumnConfig = {
     data: GiveRegionStat("level", [
-      "Ikkinchi oliy (kechki)",
-      "Ikkinchi oliy (kunduzgi)",
-      "Ikkinchi oliy (sirtqi)",
-      "Kechki",
       "Kunduzgi",
-      "Masofaviy",
+      "Sirtqi",
+      "Kechki",
       "Maxsus sirtqi",
       "Qo‘shma",
-      "Sirtqi",
+      "Masofaviy",
+      "Ikkinchi oliy (kunduzgi)",
+      "Ikkinchi oliy (sirtqi)",
+      "Ikkinchi oliy (kechki)",
     ]),
     isStack: true,
     yField: "soni",
@@ -187,7 +215,7 @@ const Students: React.FC = () => {
           fill: "white",
         },
       },
-      reversed: true,
+      // reversed: true,
       flipPage: false,
     },
     columnStyle: {
@@ -250,7 +278,7 @@ const Students: React.FC = () => {
         style: {
           opacity: 1,
           fill: "white",
-          fontSize: 14,
+          fontSize: 12,
         },
       },
     },
@@ -305,6 +333,47 @@ const Students: React.FC = () => {
     xField: "soni",
     seriesField: "name",
     color: ["#7D7AFF", "#30DB5B"],
+    legend: {
+      itemHeight: 12,
+      position: "bottom",
+      itemName: {
+        style: {
+          fill: "white",
+        },
+      },
+    },
+    barStyle: {
+      radius: [6, 6, 6, 6],
+      fillOpacity: 1,
+    },
+    yAxis: {
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+    xAxis: {
+      tickCount: 6,
+      label: {
+        style: {
+          opacity: 1,
+          fill: "white",
+          fontSize: 14,
+        },
+      },
+    },
+  };
+
+  const configBarEduType: BarConfig = {
+    data: GiveRegionStat("education_form", ["Ayol", "Erkak"]),
+    isStack: true,
+    yField: "darajasi",
+    xField: "soni",
+    seriesField: "name",
+    color: ["#DA8FFF", "#70D7FF"],
     legend: {
       itemHeight: 12,
       position: "bottom",
@@ -481,6 +550,7 @@ const Students: React.FC = () => {
     const { data } = await axios.get(
       `${univer ?? "https://student.hemis.uz/rest/"}v1/public/stat-student`
     );
+
     setStudents(data?.data);
   };
 
@@ -502,6 +572,14 @@ const Students: React.FC = () => {
               <h3>{students?.education_type?.Bakalavr?.Ayol} ta</h3>
               <h4>Ayol</h4>
             </div>
+            <div>
+              <h3>
+                {students?.education_type?.Bakalavr?.Erkak +
+                  students?.education_type?.Bakalavr?.Ayol}{" "}
+                ta
+              </h3>
+              <h4>Jami</h4>
+            </div>
           </div>
         </div>
         <div data-aos="fade-up" data-aos-delay="200" className="student">
@@ -514,6 +592,14 @@ const Students: React.FC = () => {
             <div>
               <h3>{students?.education_type?.Magistr?.Ayol} ta</h3>
               <h4>Ayol</h4>
+            </div>
+            <div>
+              <h3>
+                {students?.education_type?.Magistr?.Erkak +
+                  students?.education_type?.Magistr?.Ayol}{" "}
+                ta
+              </h3>
+              <h4>Jami</h4>
             </div>
           </div>
         </div>
@@ -553,7 +639,8 @@ const Students: React.FC = () => {
               options={["Davlat granti", "To‘lov shartnoma"]}
             />
           </div>
-          <ReactEcharts option={option} style={{ height: 400 }} />
+          {/* <ReactEcharts option={option} style={{ height: 400 }} /> */}
+          <Pie {...configPie} />
         </section>
       </div>
       <div className="row">
@@ -605,7 +692,7 @@ const Students: React.FC = () => {
           className="home__teachers-bar"
         >
           <h2 className="title">Talaba ( Ta’lim shakli bo‘yicha)</h2>
-          <Column {...kamalakTypeColumn} />
+          <Bar {...configBarEduType} />
         </section>
       </div>
     </div>
