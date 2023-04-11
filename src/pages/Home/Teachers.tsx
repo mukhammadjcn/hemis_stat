@@ -434,9 +434,7 @@ const Teachers: React.FC = () => {
           className="home__teachers-bar"
         >
           <div className="flex">
-            <h2 className="title">
-              O‘qituvchilar ilmiy(unvon) daraja bo‘yicha
-            </h2>
+            <h2 className="title">O‘qituvchilar ilmiy unvon bo‘yicha</h2>
             <h3>
               Jami:{" "}
               <b>
