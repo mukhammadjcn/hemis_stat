@@ -16,43 +16,24 @@ const Students: React.FC = () => {
   const location = useLocation();
   const [students, setStudents] = useState<any>({});
   const [isgrant, setIsGrant] = useState<boolean>(true);
-  const [eduForm, setEduForm] = useState<"Bakalavr" | "Magistr">("Bakalavr");
-  const [level, setEduLevel] = useState<"Bakalavr" | "Magistr">("Bakalavr");
-  const [age, setAge] = useState<"Bakalavr" | "Magistr">("Bakalavr");
 
   const GiveRegionStat = (
     name = "region",
     series = ["Bakalavr", "Magistr"],
-    chart = "default",
-    grouped = false
+    chart = "default"
   ) => {
     let a: any[] = [];
 
     if (chart == "default") {
       series.forEach((type) => {
-        if (grouped) {
-          students?.[name] &&
-            Object.getOwnPropertyNames(
-              students?.[name]?.[name == "level" ? level : eduForm]
-            ).map((nomi) => {
-              a.push({
-                name: type,
-                darajasi: nomi,
-                soni: students?.[name]?.[name == "level" ? level : eduForm]?.[
-                  nomi
-                ]?.[type],
-              });
+        students?.[name] &&
+          Object.getOwnPropertyNames(students?.[name]).map((nomi) => {
+            a.push({
+              name: type,
+              darajasi: nomi,
+              soni: students?.[name]?.[nomi]?.[type],
             });
-        } else {
-          students?.[name] &&
-            Object.getOwnPropertyNames(students?.[name]).map((nomi) => {
-              a.push({
-                name: type,
-                darajasi: nomi,
-                soni: students?.[name]?.[nomi]?.[type],
-              });
-            });
-        }
+          });
       });
     } else {
       for (let nomi in students?.[name]) {
@@ -210,22 +191,17 @@ const Students: React.FC = () => {
   };
 
   const kamalakColumn: ColumnConfig = {
-    data: GiveRegionStat(
-      "level",
-      [
-        "Kunduzgi",
-        "Sirtqi",
-        "Kechki",
-        "Maxsus sirtqi",
-        "Qo‘shma",
-        "Masofaviy",
-        "Ikkinchi oliy (kunduzgi)",
-        "Ikkinchi oliy (sirtqi)",
-        "Ikkinchi oliy (kechki)",
-      ],
-      "default",
-      true
-    ),
+    data: GiveRegionStat("level", [
+      "Kunduzgi",
+      "Sirtqi",
+      "Kechki",
+      "Maxsus sirtqi",
+      "Qo‘shma",
+      "Masofaviy",
+      "Ikkinchi oliy (kunduzgi)",
+      "Ikkinchi oliy (sirtqi)",
+      "Ikkinchi oliy (kechki)",
+    ]),
     isStack: true,
     yField: "soni",
     xField: "darajasi",
@@ -392,7 +368,7 @@ const Students: React.FC = () => {
   };
 
   const configBarEduType: BarConfig = {
-    data: GiveRegionStat("education_form", ["Ayol", "Erkak"], "default", true),
+    data: GiveRegionStat("education_form", ["Ayol", "Erkak"]),
     isStack: true,
     yField: "darajasi",
     xField: "soni",
@@ -644,15 +620,7 @@ const Students: React.FC = () => {
           data-aos-duration="1500"
           className="home__teachers-bar"
         >
-          <div className="flex" style={{ alignItems: "flex-start" }}>
-            <h2 className="title">Talaba ( Yosh bo‘yicha)</h2>
-            <Segmented
-              defaultValue="Bakalavr"
-              onChange={(val: any) => setAge(val)}
-              style={{ background: "#4B5364" }}
-              options={["Bakalavr", "Magistr"]}
-            />
-          </div>
+          <h2 className="title">Talaba ( Yosh bo‘yicha)</h2>
           <Bar {...configAgeBar} />
         </section>
         <section
@@ -715,15 +683,7 @@ const Students: React.FC = () => {
           data-aos-duration="1500"
           className="home__teachers-bar"
         >
-          <div className="flex" style={{ alignItems: "flex-start" }}>
-            <h2 className="title">Talaba ( Kurslar bo‘yicha)</h2>
-            <Segmented
-              defaultValue="Bakalavr"
-              onChange={(val: any) => setEduLevel(val)}
-              style={{ background: "#4B5364" }}
-              options={["Bakalavr", "Magistr"]}
-            />
-          </div>
+          <h2 className="title">Talaba ( Kurslar bo‘yicha)</h2>
           <Column {...kamalakColumn} />
         </section>
         <section
@@ -731,15 +691,7 @@ const Students: React.FC = () => {
           data-aos-duration="1500"
           className="home__teachers-bar"
         >
-          <div className="flex" style={{ alignItems: "flex-start" }}>
-            <h2 className="title">Talaba ( Ta’lim shakli bo‘yicha)</h2>
-            <Segmented
-              defaultValue="Bakalavr"
-              onChange={(val: any) => setEduForm(val)}
-              style={{ background: "#4B5364" }}
-              options={["Bakalavr", "Magistr"]}
-            />
-          </div>
+          <h2 className="title">Talaba ( Ta’lim shakli bo‘yicha)</h2>
           <Bar {...configBarEduType} />
         </section>
       </div>
