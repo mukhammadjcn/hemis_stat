@@ -6,6 +6,7 @@ import {
   BarConfig,
   ColumnConfig,
 } from "@ant-design/plots";
+import { Segmented } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
@@ -13,10 +14,14 @@ import { useLocation } from "react-router-dom";
 
 const Struktura: React.FC = () => {
   const location = useLocation();
+  const [data, setData] = useState<any>();
   const [audi, setAudi] = useState<any[]>([]);
   const [bolim, setbolim] = useState<any[]>([]);
   const [guruh, setguruh] = useState<any[]>([]);
   const [yonalish, setyonalish] = useState<any[]>([]);
+  const [guruhType, setGuruhType] = useState<"Bakalavr" | "Magistr">(
+    "Bakalavr"
+  );
 
   const configPie: PieConfig = {
     height: 360,
@@ -137,22 +142,37 @@ const Struktura: React.FC = () => {
     },
   };
 
+  const GiveGuruh = () => {
+    let final = [];
+    for (let nomi in data?.groups?.[guruhType]) {
+      final.push({
+        name: nomi,
+        count: data?.groups?.[guruhType]?.[nomi],
+      });
+    }
+    setguruh(final);
+  };
+
   const GetStudents = async () => {
     let univer = location.search?.replace("?api=", "");
 
     const { data } = await axios.get(
       `${univer ?? "https://student.hemis.uz/rest/"}v1/public/stat-structure`
     );
+    setData(data?.data);
     setAudi(
       data?.data?.auditoriums?.reduce(
         (a: any, b: any) => [{ x: b?.name, y: b?.count }, ...a],
         []
       )
     );
-    setguruh(data?.data?.groups);
     setbolim(data?.data?.departments);
     setyonalish(data?.data?.specialities);
   };
+
+  useEffect(() => {
+    GiveGuruh();
+  }, [data, guruhType]);
 
   useEffect(() => {
     GetStudents();
@@ -166,7 +186,15 @@ const Struktura: React.FC = () => {
           data-aos-duration="1500"
           className="home__teachers-bar"
         >
-          <h2 className="title">Guruhlar</h2>
+          <div className="flex" style={{ alignItems: "flex-start" }}>
+            <h2 className="title">Guruhlar</h2>
+            <Segmented
+              defaultValue="Bakalavr"
+              onChange={(val: any) => setGuruhType(val)}
+              style={{ background: "#4B5364" }}
+              options={["Bakalavr", "Magistr"]}
+            />
+          </div>
           <Column {...configColumn} />
         </section>
         <section

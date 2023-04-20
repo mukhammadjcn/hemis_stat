@@ -33,14 +33,24 @@ const Students: React.FC = () => {
         if (grouped) {
           students?.[name] &&
             Object.getOwnPropertyNames(
-              students?.[name]?.[name == "level" ? level : eduForm]
+              students?.[name]?.[
+                name == "level"
+                  ? level
+                  : name == "education_form"
+                  ? eduForm
+                  : age
+              ]
             ).map((nomi) => {
               a.push({
                 name: type,
                 darajasi: nomi,
-                soni: students?.[name]?.[name == "level" ? level : eduForm]?.[
-                  nomi
-                ]?.[type],
+                soni: students?.[name]?.[
+                  name == "level"
+                    ? level
+                    : name == "education_form"
+                    ? eduForm
+                    : age
+                ]?.[nomi]?.[type],
               });
             });
         } else {
@@ -128,7 +138,7 @@ const Students: React.FC = () => {
   };
 
   const configAgeBar: BarConfig = {
-    data: GiveRegionStat("age", ["Erkak", "Ayol"]),
+    data: GiveRegionStat("age", ["Erkak", "Ayol"], "default", true),
     isStack: true,
     yField: "darajasi",
     xField: "soni",
