@@ -582,7 +582,9 @@ const Students: React.FC = () => {
     let univer = location.search?.replace("?api=", "");
 
     const { data } = await axios.get(
-      `${univer ?? "https://student.hemis.uz/rest/"}v1/public/stat-student`
+      `${
+        univer ? univer : "https://student.hemis.uz/rest/"
+      }v1/public/stat-student`
     );
 
     setStudents(data?.data);

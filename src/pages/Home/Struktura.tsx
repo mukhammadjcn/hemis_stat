@@ -157,7 +157,9 @@ const Struktura: React.FC = () => {
     let univer = location.search?.replace("?api=", "");
 
     const { data } = await axios.get(
-      `${univer ?? "https://student.hemis.uz/rest/"}v1/public/stat-structure`
+      `${
+        univer ? univer : "https://student.hemis.uz/rest/"
+      }v1/public/stat-structure`
     );
     setData(data?.data);
     setAudi(

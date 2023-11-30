@@ -103,6 +103,12 @@
   &_tabs {
     color: white;
   }
+  &__universityName {
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
   &__teachers {
     &-pie {
       display: flex;
